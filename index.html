@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CCAO-F Study Guide — Claude Certified Associate, Foundations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF1F5; --sheet:#FFFFFF; --ink:#1B2A41; --muted:#56657A; --rule:#CBD3DE;
+  --navy:#24406B; --mark:#F5D547; --mark-soft:#FBF0B8; --ok:#1F7A6C; --ok-soft:#DCEFEA;
+  --bad:#B23A3A; --bad-soft:#F6E0E0; --ua:#2F5FA8; --ua-soft:#E3ECF8;
+  --d1:#3E6FB0; --d2:#1F7A6C; --d3:#7A5BA6; --d4:#C07A2C; --d5:#4C8A3F; --d6:#B23A3A; --d7:#5B6B80;
+  color-scheme:light;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#141B26; --sheet:#1C2533; --ink:#E4E9F0; --muted:#9AA8BA; --rule:#33415A;
+    --navy:#9DB8E3; --mark:#E8C93A; --mark-soft:#3D3618; --ok:#5CC2AE; --ok-soft:#173A34;
+    --bad:#E68080; --bad-soft:#3E2222; --ua:#8DB1EA; --ua-soft:#1E2E48;
+    color-scheme:dark;
+  }
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Literata",Georgia,"Times New Roman",serif;font-size:17px;line-height:1.7}
+h1,h2,h3,h4,.ui,button,nav,.badge,table,.q-head,.opt{font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--navy)}
+:focus-visible{outline:3px solid var(--mark);outline-offset:2px;border-radius:4px}
+
+.layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:0;max-width:1240px;margin:0 auto}
+aside{position:sticky;top:0;height:100vh;overflow-y:auto;padding:28px 20px 40px;border-right:1px solid var(--rule)}
+aside .brand{font-family:Manrope,sans-serif;font-weight:800;font-size:15px;line-height:1.3;margin-bottom:4px}
+aside .sub{font-family:Manrope,sans-serif;font-size:13px;color:var(--muted);margin-bottom:20px}
+.overall{font-family:Manrope,sans-serif;font-size:13px;margin-bottom:18px}
+.overall .track{height:8px;background:var(--rule);border-radius:4px;overflow:hidden;margin-top:6px}
+.overall .fill{height:100%;background:var(--ok);width:0;transition:width .4s}
+nav ol{list-style:none;margin:0;padding:0}
+nav li a{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:14px;font-weight:600;line-height:1.35}
+nav li a:hover{background:var(--sheet)}
+nav .dot{flex:0 0 12px;height:12px;border-radius:50%;border:2px solid var(--muted)}
+nav .dot.done{background:var(--ok);border-color:var(--ok)}
+nav .w{margin-left:auto;font-weight:500;color:var(--muted);font-size:12px}
+.tools{margin-top:22px;display:flex;flex-direction:column;gap:8px}
+.tools button{font-size:13px}
+
+main{padding:40px 48px 120px;min-width:0}
+.sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;padding:36px 44px;margin-bottom:28px}
+.sheet>*{max-width:74ch}
+.sheet>.wide,.sheet>table,.sheet>.tablewrap,.sheet>.quiz{max-width:none}
+
+header.hero{padding:8px 0 28px}
+header.hero h1{font-size:clamp(30px,4.2vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0 0 12px;font-weight:800;max-width:20ch}
+header.hero p{max-width:64ch;color:var(--muted);margin:0 0 22px}
+.blueprint{display:flex;height:64px;border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.blueprint a{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:6px 8px;color:#fff;text-decoration:none;font-family:Manrope,sans-serif;font-size:12px;font-weight:700;line-height:1.15;overflow:hidden;min-width:0}
+.blueprint a span{position:relative;z-index:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.blueprint a .pct{font-size:17px;font-weight:800}
+.blueprint a .lvl{position:absolute;left:0;bottom:0;width:100%;height:0;background:rgba(255,255,255,.28);transition:height .5s}
+.bp-legend{font-family:Manrope,sans-serif;font-size:13px;color:var(--muted);margin-top:8px}
+
+h2{font-size:28px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
+.weight{font-family:Manrope,sans-serif;font-size:14px;color:var(--muted);margin:0 0 22px}
+h3{font-size:19px;margin:30px 0 8px}
+h4{font-size:16px;margin:20px 0 6px}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 16px;padding-left:22px}
+li{margin-bottom:6px}
+mark,.term{background:linear-gradient(transparent 55%,var(--mark-soft) 55%);color:inherit;padding:0 2px;font-weight:600}
+
+.tablewrap{overflow-x:auto;margin:10px 0 20px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;line-height:1.5}
+th,td{border-bottom:1px solid var(--rule);padding:9px 10px;text-align:left;vertical-align:top}
+th{font-weight:700;background:var(--paper)}
+
+.ua{background:var(--ua-soft);border-left:4px solid var(--ua);border-radius:0 8px 8px 0;padding:14px 18px;margin:18px 0}
+.ua .lbl{font-family:Manrope,sans-serif;font-weight:800;font-size:14px;color:var(--ua);margin-bottom:4px}
+.trap{background:var(--bad-soft);border-left:4px solid var(--bad);border-radius:0 8px 8px 0;padding:14px 18px;margin:18px 0}
+.trap .lbl{font-family:Manrope,sans-serif;font-weight:800;font-size:14px;color:var(--bad);margin-bottom:4px}
+.key{background:var(--mark-soft);border-left:4px solid var(--mark);border-radius:0 8px 8px 0;padding:14px 18px;margin:18px 0}
+.key .lbl{font-family:Manrope,sans-serif;font-weight:800;font-size:14px;margin-bottom:4px}
+.ua p:last-child,.trap p:last-child,.key p:last-child,.ua ul:last-child,.trap ul:last-child,.key ul:last-child{margin-bottom:0}
+.notice{border:2px solid var(--mark);border-radius:10px;padding:16px 20px;margin-bottom:28px;background:var(--sheet)}
+.notice strong{font-family:Manrope,sans-serif}
+
+button{cursor:pointer;border-radius:7px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);padding:9px 14px;font-weight:700;font-size:14px}
+button:hover{border-color:var(--navy)}
+button.primary{background:var(--navy);border-color:var(--navy);color:var(--sheet)}
+button.primary:hover{filter:brightness(1.1)}
+button[disabled]{opacity:.45;cursor:not-allowed}
+.done-row{display:flex;align-items:center;gap:12px;margin-top:26px;padding-top:18px;border-top:1px solid var(--rule);font-family:Manrope,sans-serif;font-size:14px}
+.done-btn.on{background:var(--ok);border-color:var(--ok);color:#fff}
+
+.quiz{margin-top:30px;border-top:3px solid var(--ink);padding-top:18px}
+.quiz-title{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:14px}
+.quiz-title h3{margin:0}
+.score{font-family:Manrope,sans-serif;font-size:14px;font-weight:700}
+.q{border:1px solid var(--rule);border-radius:9px;padding:18px 20px;margin-bottom:14px}
+.q-head{font-size:12.5px;color:var(--muted);font-weight:700;margin-bottom:6px}
+.q-text{margin-bottom:12px}
+.opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;font-weight:500;font-size:15px;line-height:1.45;padding:10px 12px;margin-bottom:8px;background:var(--paper);border:1px solid transparent}
+.opt .ltr{flex:0 0 24px;height:24px;border-radius:50%;border:2px solid var(--muted);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+.opt.sel{border-color:var(--navy)}
+.opt.sel .ltr{background:var(--navy);border-color:var(--navy);color:var(--sheet)}
+.opt.right{background:var(--ok-soft);border-color:var(--ok)}
+.opt.right .ltr{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt.wrong .ltr{background:var(--bad);border-color:var(--bad);color:#fff}
+.q-actions{display:flex;gap:10px;margin-top:6px}
+.fb{margin-top:12px;font-size:15.5px;border-radius:8px;padding:12px 14px}
+.fb.ok{background:var(--ok-soft)}
+.fb.no{background:var(--bad-soft)}
+.fb .v{font-family:Manrope,sans-serif;font-weight:800}
+.fb .uaexp{margin-top:8px;color:var(--ua)}
+.mock-bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--sheet);border:1px solid var(--rule);border-radius:9px;padding:10px 14px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;font-family:Manrope,sans-serif;font-size:14px;margin-bottom:14px}
+.result{border:2px solid var(--ink);border-radius:10px;padding:18px 20px;margin:16px 0}
+.result h4{margin-top:0}
+.gl-search{width:100%;padding:11px 14px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);font-size:16px;font-family:Manrope,sans-serif;margin-bottom:14px}
+dl.gl dt{font-family:Manrope,sans-serif;font-weight:800;margin-top:14px}
+dl.gl dd{margin:2px 0 0 0}
+dl.gl dd .uk{color:var(--ua);font-size:15px}
+.mobile-nav{display:none}
+footer{font-family:Manrope,sans-serif;font-size:13px;color:var(--muted);padding:0 4px}
+
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr}
+  aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--rule);display:none}
+  aside.open{display:block}
+  .mobile-nav{display:flex;position:sticky;top:0;z-index:10;background:var(--paper);padding:10px 16px;border-bottom:1px solid var(--rule);justify-content:space-between;align-items:center;font-family:Manrope,sans-serif;font-weight:700}
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:11;background:var(--paper)}
+  .mobile-nav{top:env(safe-area-inset-top,0px)}
+  main{padding:20px 12px 80px}
+  .sheet{padding:22px 18px}
+  .blueprint{height:72px}
+  .blueprint a{padding:4px 4px;font-size:10px}
+  .blueprint a .pct{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-nav"><span>CCAO-F Study Guide</span><button id="navToggle" aria-expanded="false">Contents</button></div>
+
+<div class="layout">
+<aside id="sidebar">
+  <div class="brand">Claude Certified Associate, Foundations</div>
+  <div class="sub">CCAO-F study guide with practice tests</div>
+  <div class="overall"><span id="overallTxt">Progress: 0%</span><div class="track"><div class="fill" id="overallFill"></div></div></div>
+  <nav aria-label="Sections">
+    <ol id="navList">
+      <li><a href="#start"><span class="dot" data-dot="start"></span>Start here: the exam</a></li>
+      <li><a href="#fluency"><span class="dot" data-dot="fluency"></span>AI Fluency &amp; how Claude works</a></li>
+      <li><a href="#d1"><span class="dot" data-dot="d1"></span>1. Prompting<span class="w">14%</span></a></li>
+      <li><a href="#d2"><span class="dot" data-dot="d2"></span>2. Output evaluation<span class="w">21%</span></a></li>
+      <li><a href="#d3"><span class="dot" data-dot="d3"></span>3. Product &amp; model<span class="w">12%</span></a></li>
+      <li><a href="#d4"><span class="dot" data-dot="d4"></span>4. Workflow &amp; design<span class="w">16%</span></a></li>
+      <li><a href="#d5"><span class="dot" data-dot="d5"></span>5. Configuration<span class="w">12%</span></a></li>
+      <li><a href="#d6"><span class="dot" data-dot="d6"></span>6. Governance<span class="w">15%</span></a></li>
+      <li><a href="#d7"><span class="dot" data-dot="d7"></span>7. Troubleshooting<span class="w">10%</span></a></li>
+      <li><a href="#mock"><span class="dot" data-dot="mock"></span>Mock exam (30 questions)</a></li>
+      <li><a href="#glossary"><span class="dot" data-dot="glossary"></span>Glossary</a></li>
+    </ol>
+  </nav>
+  <div class="tools">
+    <button id="exportBtn">Export my progress</button>
+    <button id="importBtn">Import progress</button>
+    <input type="file" id="importFile" accept="application/json" hidden>
+    <button id="resetBtn">Reset all progress</button>
+  </div>
+</aside>
+
+<main>
+<header class="hero">
+  <h1>Pass the Claude Certified Associate exam</h1>
+  <p>A study guide built on Anthropic’s official CCAO-F exam blueprint. Each section covers one exam domain, explains it in plain words (with Ukrainian notes), and ends with a practice test. Your progress is saved in this browser.</p>
+  <div class="blueprint wide" id="blueprint" aria-label="Exam blueprint: domain weights"></div>
+  <div class="bp-legend">Bar width = share of exam questions. The lighter fill rises as you score in that domain’s practice test.</div>
+</header>
+
+<div class="notice">
+  <strong>Check the exam date.</strong> This guide follows exam guide v1.0 (effective July 2026). Pearson VUE has announced updated Associate exam content from 7 December 2026, with new exam guides published on 17 November 2026. If you test on or after 7 December, download the new guide from Partner Academy and compare its objectives against this page.
+</div>
+
+<!-- ============ START ============ -->
+<section class="sheet" id="start" data-module="start">
+  <h2>Start here: what the exam is</h2>
+  <p class="weight">Exam logistics, scope, and how questions are written</p>
+
+  <div class="tablewrap"><table>
+    <tr><th>Item</th><th>Detail</th></tr>
+    <tr><td>Exam code</td><td>CCAO-F</td></tr>
+    <tr><td>Questions</td><td>60, multiple-choice (one answer) and multiple-response (several answers). Each question tells you how many to select.</td></tr>
+    <tr><td>Time</td><td>120 minutes (plan about 135 minutes including check-in)</td></tr>
+    <tr><td>Passing score</td><td>Scaled 720 on a 100–1,000 scale. Criterion-referenced: you are measured against a fixed standard, not other candidates.</td></tr>
+    <tr><td>Fee</td><td>$99 USD (partner-tier discounts may apply at checkout)</td></tr>
+    <tr><td>Delivery</td><td>Pearson VUE, online proctored or at a test centre. Closed book.</td></tr>
+    <tr><td>Validity</td><td>12 months. On-time renewal is a free, non-proctored assessment in Partner Academy; a lapsed credential means retaking the full exam.</td></tr>
+    <tr><td>Retakes</td><td>Wait 14 days after the 1st fail, 30 after the 2nd, 90 after the 3rd. Maximum 4 attempts per rolling 12 months. Full fee each time.</td></tr>
+    <tr><td>Score report</td><td>Pass/fail, scaled score, and percent correct per domain (domain percentages do not decide the pass).</td></tr>
+  </table></div>
+
+  <h3>Who the exam is written for</h3>
+  <p>The <span class="term">minimally qualified candidate (MQC)</span> is a professional (operations, marketing, project management, education, communications, consulting) who uses Claude as a core productivity tool and builds Claude Projects. The guide places this person between casual prompt users and technical AI practitioners. They translate business goals into effective AI interactions, choose the right features, write structured prompts, critically evaluate output, adapt it for audiences, and know when human expertise, validation, or escalation is needed.</p>
+  <p><strong>Out of scope:</strong> building against the API, designing agentic systems, enterprise-scale architecture, integrations, ML engineering. On the exam, those situations call for <span class="term">escalation to Claude Developers or Architects</span>.</p>
+
+  <h3>The seven domains</h3>
+  <div class="tablewrap"><table>
+    <tr><th>#</th><th>Domain</th><th>Weight</th><th>≈ Questions</th></tr>
+    <tr><td>1</td><td>Prompting and Task Execution</td><td>14%</td><td>8</td></tr>
+    <tr><td>2</td><td>Output Evaluation and Validation</td><td>21%</td><td>13</td></tr>
+    <tr><td>3</td><td>Product and Model Selection</td><td>12%</td><td>7</td></tr>
+    <tr><td>4</td><td>Workflow Integration and Solution Design</td><td>16%</td><td>10</td></tr>
+    <tr><td>5</td><td>Configuration and Knowledge Management</td><td>12%</td><td>7</td></tr>
+    <tr><td>6</td><td>Governance, Risk, and Responsible Use</td><td>15%</td><td>9</td></tr>
+    <tr><td>7</td><td>Troubleshooting and Optimization</td><td>10%</td><td>6</td></tr>
+  </table></div>
+  <p>Domains 2, 6 and 7 together are 46% of the exam. They are about judgement: checking output, deciding what belongs in Claude, and fixing weak results.</p>
+
+  <h3>How questions are written</h3>
+  <p>The official sample items are short workplace scenarios that ask for the <strong>most appropriate action</strong> or the choice that <strong>best fits the task</strong>. All four options often sound reasonable; you pick the best one. The three official samples test: verifying a confidently cited regulation subsection before sharing it, choosing a faster lower-cost model for high-volume simple replies, and anonymising personal identifiers before uploading data that policy restricts.</p>
+
+  <div class="key"><div class="lbl">Wrong-answer patterns to recognise</div>
+  <ul>
+    <li><strong>Trusting confidence:</strong> “send it because Claude sounded sure” or “ask Claude to rate its own confidence”. Self-reported confidence is not a reliable accuracy signal.</li>
+    <li><strong>Cosmetic fixes:</strong> reformatting or making text sound more formal does not fix accuracy.</li>
+    <li><strong>Overkill:</strong> always using the most capable, most expensive model, or uploading everything “just in case”.</li>
+    <li><strong>Giving up:</strong> skipping the task, disabling features, or switching platforms when a safe way to proceed exists.</li>
+    <li><strong>Fake controls:</strong> telling Claude “don’t retain this” or “forget this” is not a data-protection control.</li>
+    <li><strong>Ignoring policy:</strong> “it’s internal, so it’s fine” when organisational policy says otherwise.</li>
+  </ul></div>
+
+  <div class="ua"><div class="lbl">🇺🇦 Простими словами</div>
+  <p>Іспит перевіряє не «чи вмієш ти писати промпти», а чи маєш ти правильне судження: перевірити факти перед відправкою, вибрати правильний інструмент і модель, захистити персональні дані, знати межі своєї ролі і вчасно передати складну технічну задачу розробникам або архітекторам. Найправильніша відповідь зазвичай та, що дозволяє виконати задачу <em>безпечно</em>, а не та, що відмовляється від неї або робить «на авось».</p></div>
+
+  <h3>Recommended preparation (from the official guide)</h3>
+  <ul>
+    <li>Self-assess against every objective in the blueprint (this site follows it domain by domain).</li>
+    <li>Read Anthropic’s help articles on Projects, Artifacts, Memory, Skills, and Code Execution.</li>
+    <li>Practise structuring prompts, decomposing tasks, and iterating.</li>
+    <li>Build a real Project with instructions and knowledge sources; evaluate outputs for accuracy and bias.</li>
+    <li>Practise responsible-use judgement: data sensitivity, appropriate use cases, escalation, human review.</li>
+  </ul>
+  <p>The Claude Associate learning path pairs this with Anthropic Academy courses: Claude 101, AI Fluency: Framework &amp; Foundations, AI Capabilities and Limitations, and Introduction to Claude Cowork. Partners also get an 8-module Associate prep course in Partner Academy.</p>
+
+  <div class="done-row"><button class="done-btn" data-done="start">Mark as studied</button><span>Your progress is saved in this browser.</span></div>
+</section>
+
+<!-- ============ FLUENCY ============ -->
+<section class="sheet" id="fluency" data-module="fluency">
+  <h2>AI Fluency and how Claude works</h2>
+  <p class="weight">Foundation vocabulary used across all domains (AI Fluency, Claude 101, AI Capabilities &amp; Limitations)</p>
+
+  <h3>The 4D Framework</h3>
+  <p>Anthropic’s AI Fluency course (built with Prof. Rick Dakan and Prof. Joseph Feller) defines <span class="term">AI fluency</span> as working with AI effectively, efficiently, ethically, and safely through four competencies:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Competency</th><th>Core question</th><th>Sub-parts</th></tr>
+    <tr><td><strong>Delegation</strong></td><td>Should AI do this, and which part?</td><td><em>Problem awareness</em> (understand your goal), <em>platform awareness</em> (know what the AI can and can’t do), <em>task delegation</em> (split work between human and AI)</td></tr>
+    <tr><td><strong>Description</strong></td><td>How do I tell the AI what I need?</td><td><em>Product</em> description (what output), <em>process</em> description (how to approach it), <em>performance</em> description (how the AI should behave)</td></tr>
+    <tr><td><strong>Discernment</strong></td><td>Is what came back good enough?</td><td><em>Product</em> discernment (the output), <em>process</em> discernment (the reasoning and approach), <em>performance</em> discernment (the AI’s behaviour)</td></tr>
+    <tr><td><strong>Diligence</strong></td><td>Am I using it responsibly, and do I own the result?</td><td><em>Creation</em> diligence (choose tools and data responsibly), <em>transparency</em> diligence (be honest about AI’s role), <em>deployment</em> diligence (take responsibility for what you share)</td></tr>
+  </table></div>
+  <p>Two loops connect them. The <span class="term">Description–Discernment loop</span> is the inner loop of describing, evaluating, and refining. The <span class="term">Delegation–Diligence loop</span> is the outer loop of deciding what AI does and taking responsibility for it.</p>
+
+  <h3>Three modes of human–AI interaction</h3>
+  <ul>
+    <li><span class="term">Automation</span>: AI performs a specific task based on your instructions (e.g., reformat 200 entries).</li>
+    <li><span class="term">Augmentation</span>: you and AI collaborate as thinking partners, iterating together (e.g., co-developing a strategy).</li>
+    <li><span class="term">Agency</span>: you configure AI to act independently, possibly for other people (e.g., a configured assistant that answers staff questions).</li>
+  </ul>
+
+  <h3>How a large language model works (enough for the exam)</h3>
+  <ul>
+    <li>Claude is a <span class="term">large language model (LLM)</span> trained on large amounts of text. It generates responses by predicting likely next pieces of text (<span class="term">tokens</span>). It is not looking facts up in a database unless it is given sources (uploaded files, web search, connectors).</li>
+    <li>Because it produces <em>plausible</em> text, it can produce plausible but false details: a <span class="term">hallucination</span>.</li>
+    <li>Its built-in knowledge stops at a <span class="term">training cutoff</span>. Recent information needs web search, Research, or your documents.</li>
+    <li>Everything Claude can “see” in a conversation sits inside a finite <span class="term">context window</span> (your messages, its replies, files, instructions). Very long conversations use up the window and your usage limits faster.</li>
+    <li>Output is <span class="term">non-deterministic</span>: the same prompt can produce different wording. Getting the same answer twice does not prove it is correct.</li>
+    <li>Models can be <span class="term">sycophantic</span>: inclined to agree with the user’s framing. Ask for counter-arguments and evidence on both sides.</li>
+  </ul>
+
+  <h3>Capabilities vs limitations</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Strong at</th><th>Watch out for</th></tr>
+    <tr><td>Drafting, rewriting, summarising, translating, adapting tone</td><td>Invented specifics: numbers, citations, quotes, URLs, section numbers</td></tr>
+    <tr><td>Analysing documents and data you provide</td><td>Missing or outdated information past the training cutoff</td></tr>
+    <tr><td>Brainstorming, structuring, outlining, planning</td><td>Bias inherited from training data</td></tr>
+    <tr><td>Explaining concepts at different levels</td><td>Losing earlier details in very long conversations</td></tr>
+    <tr><td>Code, spreadsheets, files (with code execution)</td><td>Overconfidence: fluent wording is not evidence of truth</td></tr>
+  </table></div>
+
+  <div class="ua"><div class="lbl">🇺🇦 Простими словами</div>
+  <p><strong>4D</strong> — це чотири навички: <em>Delegation</em> — вирішити, що віддати ШІ, а що зробити самій; <em>Description</em> — чітко пояснити задачу; <em>Discernment</em> — критично перевірити результат; <em>Diligence</em> — відповідальність: прозорість щодо використання ШІ і відповідальність за те, що ти відправляєш людям.</p>
+  <p>Claude не «знає» факти як база даних, він генерує найімовірніший текст. Тому він може впевнено вигадати цифру чи посилання. Впевнений тон ≠ правда.</p></div>
+
+  <div class="quiz" data-quiz="fluency"></div>
+  <div class="done-row"><button class="done-btn" data-done="fluency">Mark as studied</button></div>
+</section>
+
+<!-- ============ D1 ============ -->
+<section class="sheet" id="d1" data-module="d1">
+  <h2>Domain 1. Prompting and Task Execution</h2>
+  <p class="weight">14% of the exam · about 8 questions</p>
+
+  <h3>Official objectives</h3>
+  <ul>
+    <li>Create effective prompts for business and technical tasks</li>
+    <li>Apply task decomposition techniques to structure complex requests</li>
+    <li>Iterate prompts to improve output quality</li>
+    <li>Adapt prompting strategies by task type: analysis, research, drafting, brainstorming</li>
+  </ul>
+
+  <h3>Anatomy of an effective prompt</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Element</th><th>What it does</th><th>Example</th></tr>
+    <tr><td>Role</td><td>Sets perspective, vocabulary, expertise</td><td>“You are an operations analyst at a logistics company.”</td></tr>
+    <tr><td>Context</td><td>Background Claude can’t guess: audience, purpose, situation</td><td>“This goes to regional managers who weren’t at the meeting.”</td></tr>
+    <tr><td>Task</td><td>One clear instruction with an action verb</td><td>“Summarise the three decisions and their owners.”</td></tr>
+    <tr><td>Constraints</td><td>Length, tone, scope, what to include or avoid</td><td>“Under 150 words, neutral tone, no internal jargon.”</td></tr>
+    <tr><td>Output format</td><td>Structure of the answer</td><td>“A table: decision, owner, deadline.”</td></tr>
+    <tr><td>Examples</td><td>Show what good looks like (<span class="term">few-shot</span> / multishot prompting)</td><td>Paste one past summary you liked.</td></tr>
+    <tr><td>Success criteria</td><td>How you will judge the result</td><td>“Every decision must name an owner; mark gaps as [missing].”</td></tr>
+  </table></div>
+
+  <h3>Techniques Anthropic recommends</h3>
+  <ul>
+    <li><strong>Be clear and direct.</strong> Treat Claude like a smart new colleague with no context: explain the goal and why.</li>
+    <li><strong>Tell Claude what to do</strong>, not only what not to do (“write in flowing paragraphs” works better than “no bullet points”).</li>
+    <li><strong>Use examples</strong> to lock in format and style.</li>
+    <li><strong>Separate parts of the prompt</strong> clearly, e.g. with headings or <span class="term">XML tags</span> like &lt;document&gt; … &lt;/document&gt;, so instructions and source material don’t blur together.</li>
+    <li><strong>Ask Claude to think step by step</strong> for complex reasoning (or use extended thinking).</li>
+    <li><strong>Give permission to say “I don’t know”</strong> or to mark missing information instead of guessing.</li>
+    <li><strong>Ground in sources:</strong> “Answer only from the attached documents and quote the passage you used.”</li>
+  </ul>
+
+  <h3>Task decomposition</h3>
+  <p><span class="term">Task decomposition</span> means splitting a complex request into smaller steps you can check. When each step’s output feeds the next prompt, that’s <span class="term">prompt chaining</span>. Example: (1) extract facts from transcripts → (2) you check the facts → (3) draft a summary from the checked facts → (4) adapt the summary for executives. Benefits: each step is easier for Claude, errors are caught early, and you can reuse steps.</p>
+
+  <h3>Iteration</h3>
+  <p>The first output is a draft. Improve it by giving <strong>specific feedback</strong> (“shorten section 2 to three sentences; the audience is finance, so lead with cost impact”) rather than regenerating the same prompt and hoping. Change one thing at a time so you know what helped. When a fix works, carry it back into your reusable prompt or Project instructions.</p>
+
+  <h3>Adapting by task type</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Task type</th><th>What to emphasise in the prompt</th></tr>
+    <tr><td>Analysis</td><td>Provide the data; state the question and criteria; ask Claude to separate findings from interpretation and to show what each conclusion is based on.</td></tr>
+    <tr><td>Research</td><td>Define the question, scope (time period, region, sources), source quality, and ask for citations. Use web search or Research for current information.</td></tr>
+    <tr><td>Drafting</td><td>Audience, purpose, tone, length, key points, structure; an example of the desired style.</td></tr>
+    <tr><td>Brainstorming</td><td>Ask for many, varied options; defer judgement; then narrow down in a follow-up with explicit criteria.</td></tr>
+  </table></div>
+
+  <div class="ua"><div class="lbl">🇺🇦 Простими словами</div>
+  <p>Хороший промпт = <strong>хто ти</strong> (роль) + <strong>що відбувається</strong> (контекст) + <strong>що зробити</strong> (задача) + <strong>обмеження</strong> + <strong>у якому вигляді</strong> (формат) + <strong>приклад</strong>. Велику задачу розбивай на кроки і перевіряй кожен крок. Якщо результат поганий — не тисни «перегенерувати», а скажи конкретно, що змінити.</p></div>
+
+  <div class="trap"><div class="lbl">Exam traps</div>
+  <ul>
+    <li>“Tell Claude to be 100% accurate” or writing in capitals does not make output accurate. Grounding in sources and verification do.</li>
+    <li>One giant prompt for a multi-part deliverable is usually worse than decomposed steps with review points.</li>
+    <li>Regenerating without changing the input is not iteration.</li>
+  </ul></div>
+
+  <div class="quiz" data-quiz="d1"></div>
+  <div class="done-row"><button class="done-btn" data-done="d1">Mark as studied</button></div>
+</section>
+
+<!-- ============ D2 ============ -->
+<section class="sheet" id="d2" data-module="d2">
+  <h2>Domain 2. Output Evaluation and Validation</h2>
+  <p class="weight">21% of the exam · about 13 questions · the largest domain</p>
+
+  <h3>Official objectives</h3>
+  <ul>
+    <li>Evaluate Claude-generated outputs for accuracy and completeness</li>
+    <li>Identify hallucinations, inconsistencies, and biases in responses</li>
+    <li>Apply fact-checking and validation techniques</li>
+    <li>Determine when human review or additional verification is required</li>
+    <li>Edit, adapt, refine, and compare outputs for the intended audience</li>
+    <li>Organise and curate information; choose output formats (artifacts, inline, structured data)</li>
+  </ul>
+
+  <h3>The evaluation checklist</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Dimension</th><th>Question to ask</th></tr>
+    <tr><td><strong>Accuracy</strong></td><td>Is every claim true and supported by the source?</td></tr>
+    <tr><td><strong>Completeness</strong></td><td>Did it cover everything requested, and leave nothing important out of the source?</td></tr>
+    <tr><td><strong>Consistency</strong></td><td>Do numbers, names, and dates agree across the whole output?</td></tr>
+    <tr><td><strong>Relevance</strong></td><td>Does it answer the actual question for this audience?</td></tr>
+    <tr><td><strong>Bias &amp; fairness</strong></td><td>Does it stereotype, exclude, or present one side as the only view?</td></tr>
+    <tr><td><strong>Fit for purpose</strong></td><td>Right tone, length, and format for where it will be used?</td></tr>
+  </table></div>
+
+  <h3>Hallucination red flags</h3>
+  <ul>
+    <li>Very specific details: exact percentages, subsection numbers, case names, page numbers, URLs, report titles.</li>
+    <li>Direct quotes attributed to real people.</li>
+    <li>Facts that don’t appear in the documents you provided.</li>
+    <li>Recent events beyond the training cutoff stated without a source.</li>
+    <li>Statements that agree suspiciously well with your own assumption (sycophancy).</li>
+  </ul>
+
+  <h3>Fact-checking and validation techniques</h3>
+  <ul>
+    <li><strong>Verify against the authoritative source</strong>: the official regulation, the original contract, the primary data. This is the default correct answer for high-stakes claims.</li>
+    <li><strong>Prioritise by risk</strong>: check numbers, names, dates, citations, quotes, legal or financial statements first.</li>
+    <li><strong>Ask Claude to show its basis</strong>: “Quote the passage that supports each claim”, then check the quotes exist.</li>
+    <li><strong>Ask Claude to list claims that need checking</strong>, then you do the checking.</li>
+    <li><strong>Cross-check</strong> with independent sources; use web search or Research with citations for current facts, and open the cited pages.</li>
+    <li><strong>Subject-matter-expert review</strong> for specialised content.</li>
+  </ul>
+  <div class="key"><div class="lbl">Key rule</div><p>Self-reported confidence is not a reliable accuracy signal. Asking Claude “are you sure?” or to rate its confidence, or regenerating and getting the same answer, does not verify anything. Verification means checking against a source outside the model’s own output.</p></div>
+
+  <h3>When human review is required</h3>
+  <p>Human review or expert verification is needed when output is <strong>high-stakes</strong> (legal, medical, financial, compliance, safety), <strong>affects people</strong> (hiring, performance, credit, eligibility), goes <strong>external</strong> (clients, regulators, the public, press), or contains <strong>factual claims someone will rely on</strong>. Low-risk internal work (brainstorm lists, first drafts, reformatting) needs lighter review. The person who sends it owns it.</p>
+
+  <h3>Adapting and comparing outputs</h3>
+  <ul>
+    <li>Adapt for the audience: executives get impact and decisions first; technical teams get detail; customers get plain language.</li>
+    <li>When comparing two drafts, judge both against explicit criteria (accuracy, completeness, audience fit, requirements), not length or polish.</li>
+    <li>Editing for tone must never change the facts.</li>
+  </ul>
+
+  <h3>Choosing the output format</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Format</th><th>Use when</th></tr>
+    <tr><td><strong>Inline</strong> (in the chat)</td><td>Short answers, quick explanations, conversational replies</td></tr>
+    <tr><td><strong>Artifact</strong></td><td>Substantial, standalone content you’ll reuse, edit, iterate on, or share: documents, reports, code, diagrams, interactive tools. Shown in a separate window.</td></tr>
+    <tr><td><strong>Structured data</strong></td><td>Tables, CSV, JSON, consistent fields, for spreadsheets, databases, or other tools</td></tr>
+  </table></div>
+
+  <div class="ua"><div class="lbl">🇺🇦 Простими словами</div>
+  <p>Це найбільший розділ іспиту (21%). Головне правило: <strong>перевіряй конкретику перед тим, як відправити людям</strong> — цифри, дати, імена, цитати, номери статей і посилання. Перевіряти треба по першоджерелу, а не питати Claude «ти впевнений?». Якщо результат впливає на людей, гроші, закон чи здоров’я, або йде клієнту назовні — потрібна перевірка людиною чи експертом.</p>
+  <p><strong>Артефакт</strong> — окреме вікно з документом/кодом, який можна редагувати і ділитися. <strong>Inline</strong> — коротка відповідь у чаті. <strong>Structured data</strong> — таблиця/CSV/JSON для інших інструментів.</p></div>
+
+  <div class="trap"><div class="lbl">Exam traps</div>
+  <ul>
+    <li>A real-looking URL or report title is not proof the source exists or says that.</li>
+    <li>When two numbers conflict in Claude’s output, check the source; don’t pick the one that appears more often.</li>
+    <li>Rewording a summary to sound more formal does nothing for correctness.</li>
+  </ul></div>
+
+  <div class="quiz" data-quiz="d2"></div>
+  <div class="done-row"><button class="done-btn" data-done="d2">Mark as studied</button></div>
+</section>
+
+<!-- ============ D3 ============ -->
+<section class="sheet" id="d3" data-module="d3">
+  <h2>Domain 3. Product and Model Selection</h2>
+  <p class="weight">12% of the exam · about 7 questions</p>
+
+  <h3>Official objectives</h3>
+  <ul>
+    <li>Select appropriate Claude product features (Projects, research mode, chat, artifacts)</li>
+    <li>Differentiate between Claude model types (Haiku, Sonnet, Opus)</li>
+    <li>Align model selection with task requirements (cost, speed, quality)</li>
+    <li>Understand and manage context limitations and memory (when to restart, summarise, or persist)</li>
+  </ul>
+
+  <h3>Features: which one fits?</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Feature</th><th>What it is</th><th>Choose it when</th></tr>
+    <tr><td><strong>Chat</strong></td><td>A single conversation</td><td>One-off questions, quick drafts, exploration</td></tr>
+    <tr><td><strong>Projects</strong></td><td>Self-contained workspaces with their own chat history, knowledge base (uploaded files), custom instructions, and memory</td><td>Recurring work that reuses the same context: a client, a campaign, a role, a team workflow</td></tr>
+    <tr><td><strong>Research</strong></td><td>Agentic mode: Claude runs multiple searches that build on each other, across the web and connected sources, and returns a report with citations. Takes minutes, uses limits faster. Paid plans; needs web search on.</td><td>Deep, multi-source questions needing current information and citations</td></tr>
+    <tr><td><strong>Web search</strong></td><td>Claude searches the web inside a normal reply</td><td>Quick current facts</td></tr>
+    <tr><td><strong>Artifacts</strong></td><td>Standalone content in a side window: documents, code, diagrams, interactive apps; can be iterated and shared</td><td>Substantial, reusable, editable outputs</td></tr>
+    <tr><td><strong>Extended thinking</strong></td><td>Claude reasons longer before answering</td><td>Complex analysis, multi-step reasoning, tricky problems</td></tr>
+    <tr><td><strong>Memory</strong></td><td>Claude remembers relevant context across chats; each Project has its own separate memory; you can view and edit it</td><td>Continuity across conversations</td></tr>
+    <tr><td><strong>Incognito chat</strong></td><td>A chat not saved to history or memory</td><td>Self-contained or exploratory conversations you don’t want remembered (data-retention rules still apply)</td></tr>
+    <tr><td><strong>Connectors</strong></td><td>Links to tools such as Google Drive, Gmail, Google Calendar (built on MCP)</td><td>Claude needs live data from your tools instead of copied files</td></tr>
+    <tr><td><strong>Skills</strong></td><td>Folders of instructions, scripts and resources Claude loads when relevant to a task</td><td>Repeatable, specialised procedures (house style, document formats, team playbooks)</td></tr>
+    <tr><td><strong>Code execution &amp; file creation</strong></td><td>Claude runs code to analyse data and create files (spreadsheets, documents, presentations, charts)</td><td>Data analysis, file outputs</td></tr>
+    <tr><td><strong>Cowork</strong></td><td>Agentic mode for knowledge work: Claude plans and carries out multi-step tasks, can work with local files via the desktop app and run scheduled tasks. Paid plans.</td><td>Longer multi-step deliverables across files and tools</td></tr>
+  </table></div>
+
+  <h3>Models: Haiku, Sonnet, Opus</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Model family</th><th>Profile</th><th>Typical tasks</th></tr>
+    <tr><td><strong>Haiku</strong></td><td>Fastest, lowest cost</td><td>High-volume, straightforward tasks: short replies, classification, extraction, simple translation</td></tr>
+    <tr><td><strong>Sonnet</strong></td><td>Balance of intelligence, speed and cost</td><td>Most everyday business work: drafting, analysis, summarisation, coding</td></tr>
+    <tr><td><strong>Opus</strong></td><td>Most capable of the three, slower and higher cost</td><td>Complex reasoning, nuanced analysis, demanding multi-step work where quality matters most</td></tr>
+  </table></div>
+  <p>The rule from the official sample: <strong>match the model to the task requirements</strong>. Use a faster, lower-cost model for simple high-volume work; reserve the most capable model for complex reasoning. Anthropic’s current lineup also includes a newer top tier above Opus, but the exam guide v1.0 tests Haiku, Sonnet and Opus.</p>
+
+  <h3>Context and memory management</h3>
+  <ul>
+    <li><strong>Restart</strong> (new chat) when you switch topics, when a long conversation drifts, or when Claude starts missing earlier instructions.</li>
+    <li><strong>Summarise</strong> before restarting: ask Claude to summarise key decisions, constraints and status, then paste that into the new chat.</li>
+    <li><strong>Persist</strong> stable, reusable context in a Project (knowledge files and instructions) or memory, instead of re-pasting it every time.</li>
+    <li>What you say in one chat doesn’t automatically reach other chats in the same Project; durable context belongs in Project knowledge or instructions.</li>
+    <li>Each Project has its own memory, separate from other Projects. Incognito chats aren’t saved to memory or history.</li>
+  </ul>
+
+  <div class="ua"><div class="lbl">🇺🇦 Простими словами</div>
+  <p><strong>Haiku</strong> — швидко і дешево, для простих масових задач. <strong>Sonnet</strong> — «золота середина» для щоденної роботи. <strong>Opus</strong> — найрозумніший, для складного аналізу, але дорожчий і повільніший.</p>
+  <p><strong>Project</strong> — коли задача повторюється і потрібен той самий контекст. <strong>Research</strong> — коли потрібне глибоке дослідження з актуальних джерел із посиланнями. Якщо чат став задовгим і Claude «забуває» — попроси підсумок і почни новий чат, а постійну інформацію збережи у Project.</p></div>
+
+  <div class="trap"><div class="lbl">Exam traps</div>
+  <ul>
+    <li>“Always use the most capable model to maximise quality” wastes cost and speed on simple tasks.</li>
+    <li>Research is not a way to share a knowledge base with a team; a shared Project is.</li>
+    <li>The context window is not unlimited, and memory doesn’t mean Claude reads every past chat in every Project.</li>
+  </ul></div>
+
+  <div class="quiz" data-quiz="d3"></div>
+  <div class="done-row"><button class="done-btn" data-done="d3">Mark as studied</button></div>
+</section>
+
+<!-- ============ D4 ============ -->
+<section class="sheet" id="d4" data-module="d4">
+  <h2>Domain 4. Workflow Integration and Solution Design</h2>
+  <p class="weight">16% of the exam · about 10 questions</p>
+
+  <h3>Official objectives</h3>
+  <ul>
+    <li>Apply Claude to analyse requirements and use cases</li>
+    <li>Use Claude for research, planning, and process optimisation</li>
+    <li>Use Claude to support solution design, development, and iteration</li>
+    <li>Integrate Claude into existing workflows to augment or redesign them</li>
+    <li>Communicate Claude’s value and limitations to stakeholders</li>
+  </ul>
+
+  <h3>A practical method</h3>
+  <ol>
+    <li><strong>Understand the requirement.</strong> What outcome does the business need? Who is affected? What does success look like?</li>
+    <li><strong>Map the current process</strong> step by step and find bottlenecks: repetitive, text-heavy, slow, or error-prone steps.</li>
+    <li><strong>Decide Claude’s role per step:</strong> automate, augment, or leave with a human. Mark the human checkpoints.</li>
+    <li><strong>Pilot</strong> on a small scope with real tasks.</li>
+    <li><strong>Measure</strong> against a baseline: time per task, quality or error rate, rework, satisfaction.</li>
+    <li><strong>Iterate, then scale</strong>: refine prompts, Projects and templates from feedback; document the workflow.</li>
+  </ol>
+  <p>This is a sequence, so the order matters on the exam: understanding and mapping come before rollout.</p>
+
+  <h3>Augment vs redesign</h3>
+  <ul>
+    <li><span class="term">Augment</span>: keep the process, make steps faster or better (Claude drafts, a human reviews and decides).</li>
+    <li><span class="term">Redesign</span>: rethink the process itself now that AI exists (e.g., merge steps, change who does what, add AI-assisted triage at the start).</li>
+    <li>Good candidates for Claude: repetitive, language-heavy tasks with clear quality criteria and room for human review. Poor candidates: decisions needing accountability or judgement Claude can’t provide, or tasks where errors are costly and hard to detect.</li>
+  </ul>
+
+  <h3>Using Claude across the work</h3>
+  <ul>
+    <li><strong>Requirements analysis:</strong> give Claude meeting notes or briefs; ask it to extract requirements, flag ambiguities, conflicts, and open questions.</li>
+    <li><strong>Research and planning:</strong> project plans, risk lists, stakeholder maps, competitive scans (verify facts).</li>
+    <li><strong>Process optimisation:</strong> have Claude analyse process documentation and propose improvements, then validate with the people who do the work.</li>
+    <li><strong>Solution design and iteration:</strong> templates, prototypes, workflows; test on real cases including edge cases; refine.</li>
+  </ul>
+
+  <h3>Communicating value and limitations</h3>
+  <ul>
+    <li>Use concrete evidence from pilots (time saved, quality metrics), not hype.</li>
+    <li>Be honest about limits: it can be wrong, needs current sources for recent facts, and outputs need review.</li>
+    <li>Explain where humans stay in the loop and who owns the result.</li>
+    <li>Set realistic expectations; never promise 100% accuracy.</li>
+  </ul>
+
+  <h3>Knowing when to escalate</h3>
+  <p>The Associate role ends where technical build begins. Escalate to <strong>Claude Developers or Architects</strong> when the solution needs API integration, custom applications, agentic systems that act autonomously in business systems, embedding Claude in a product or website, or enterprise-scale architecture.</p>
+
+  <div class="ua"><div class="lbl">🇺🇦 Простими словами</div>
+  <p>Спочатку розберись у процесі (як він працює зараз і де «болить»), потім вирішуй, які кроки віддати Claude, а де залишити людину. Запусти пілот, виміряй результат у порівнянні з тим, як було, і лише потім масштабуй. Стейкхолдерам кажи чесно: ось що Claude дає, ось його обмеження, ось де людина перевіряє. Якщо потрібна інтеграція через API, чат-бот на сайт чи автономні агенти — це вже задача для розробників/архітекторів, ти ескалюєш.</p></div>
+
+  <div class="trap"><div class="lbl">Exam traps</div>
+  <ul>
+    <li>“Roll out to the whole company immediately” before mapping, piloting, or measuring.</li>
+    <li>“Replace the team’s review step entirely” for high-stakes work.</li>
+    <li>Metrics like number of prompts written or output length don’t measure business value.</li>
+  </ul></div>
+
+  <div class="quiz" data-quiz="d4"></div>
+  <div class="done-row"><button class="done-btn" data-done="d4">Mark as studied</button></div>
+</section>
+
+<!-- ============ D5 ============ -->
+<section class="sheet" id="d5" data-module="d5">
+  <h2>Domain 5. Configuration and Knowledge Management</h2>
+  <p class="weight">12% of the exam · about 7 questions</p>
+
+  <h3>Official objectives</h3>
+  <ul>
+    <li>Configure Claude Projects with instructions and knowledge sources</li>
+    <li>Manage uploaded knowledge and connectors (e.g., Google Drive, Gmail)</li>
+    <li>Create effective system-level instructions</li>
+    <li>Maintain and update Claude configurations, knowledge sources, and instructions</li>
+  </ul>
+
+  <h3>Projects: the two configuration layers</h3>
+  <ul>
+    <li><span class="term">Project knowledge</span>: files you upload (documents, text, code, data). Claude uses them as context in every chat in that Project.</li>
+    <li><span class="term">Project instructions</span>: standing guidance applied to every chat in the Project: role, tone, audience, format, rules.</li>
+  </ul>
+  <p>Facts worth knowing: Projects are available on all plans; free users can create up to five. On paid plans, when project knowledge approaches the context limit, Claude automatically switches to <span class="term">RAG (retrieval-augmented generation)</span>, retrieving the relevant parts and expanding capacity (up to about 10×). On Team and Enterprise plans, Projects can be shared with view-only or edit permissions.</p>
+
+  <h3>Knowledge management best practices</h3>
+  <ul>
+    <li>Use <strong>descriptive file names</strong> (“2026-Q4-Brand-Guidelines.pdf”, not “doc1.pdf”); Claude uses names to find the right information.</li>
+    <li>Keep <strong>one current version</strong> of each document; remove outdated versions so Claude doesn’t mix old and new facts.</li>
+    <li>Upload only what’s relevant to the Project; don’t mix unrelated work.</li>
+    <li>Never upload data your policy prohibits (see Domain 6).</li>
+    <li>Review knowledge on a schedule; assign an owner.</li>
+  </ul>
+
+  <h3>Writing effective system-level instructions</h3>
+  <ul>
+    <li>Say who Claude is in this Project, who the audience is, and what good output looks like.</li>
+    <li>Specify tone, format, length, terminology, and what to do when information is missing (“say it’s not in the sources”).</li>
+    <li>Point to the knowledge: “Use the price list in project knowledge for any pricing.”</li>
+    <li>Keep them durable and general; task-specific details belong in the individual chat. Overloaded instructions dilute focus.</li>
+    <li>Include an example of a good output if format matters.</li>
+  </ul>
+
+  <h3>Connectors</h3>
+  <p><span class="term">Connectors</span> let Claude access tools such as Google Drive, Gmail and Google Calendar (and others via MCP, the Model Context Protocol), so it works with current data instead of uploaded copies. Good practice: connect only what the task needs (<span class="term">least privilege</span>), follow your organisation’s approval (Team/Enterprise admins control which connectors are available), remember Claude sees what your account can see, and still verify what it retrieves.</p>
+
+  <h3>Maintaining configurations</h3>
+  <p>When a policy, price list, or process changes: update or replace the knowledge file, remove the old version, adjust instructions if needed, then test with a few typical questions to confirm the Project now answers correctly. Record what changed.</p>
+
+  <div class="ua"><div class="lbl">🇺🇦 Простими словами</div>
+  <p>Project має два «шари»: <strong>знання</strong> (файли) і <strong>інструкції</strong> (постійні правила поведінки). Файли називай зрозуміло і тримай тільки актуальні версії — старі видаляй. Інструкції пиши загальні й стабільні, а деталі конкретної задачі пиши в самому чаті. Конектори (Google Drive, Gmail) підключай лише ті, що потрібні, і згідно з політикою компанії. Коли щось змінилось — онови файл, прибери старий, протестуй.</p></div>
+
+  <div class="trap"><div class="lbl">Exam traps</div>
+  <ul>
+    <li>Leaving old and new versions of a document side by side causes conflicting answers.</li>
+    <li>Putting one-off task details into Project instructions.</li>
+    <li>Connecting every account “just in case”.</li>
+  </ul></div>
+
+  <div class="quiz" data-quiz="d5"></div>
+  <div class="done-row"><button class="done-btn" data-done="d5">Mark as studied</button></div>
+</section>
+
+<!-- ============ D6 ============ -->
+<section class="sheet" id="d6" data-module="d6">
+  <h2>Domain 6. Governance, Risk, and Responsible Use</h2>
+  <p class="weight">15% of the exam · about 9 questions</p>
+
+  <h3>Official objectives</h3>
+  <ul>
+    <li>Identify appropriate and inappropriate use cases</li>
+    <li>Apply data sensitivity, regulatory, and privacy considerations</li>
+    <li>Follow organisational AI policies and governance standards</li>
+    <li>Understand the ethical implications of AI usage</li>
+  </ul>
+
+  <h3>Appropriate vs inappropriate use</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Generally appropriate (with review)</th><th>Inappropriate or needs strong safeguards</th></tr>
+    <tr><td>Drafting emails, reports, documentation</td><td>Claude as the sole decision-maker on hiring, firing, credit, medical or legal outcomes</td></tr>
+    <tr><td>Summarising and analysing approved documents</td><td>Uploading data your policy prohibits</td></tr>
+    <tr><td>Brainstorming, planning, research with verification</td><td>Fabricating testimonials, reviews, quotes, or data</td></tr>
+    <tr><td>First-pass screening that humans then review</td><td>Publishing high-stakes content without human review</td></tr>
+    <tr><td>Internal knowledge assistants on approved content</td><td>Deceiving people about AI involvement where it matters</td></tr>
+  </table></div>
+
+  <h3>Data sensitivity and privacy</h3>
+  <ul>
+    <li><span class="term">PII (personally identifiable information)</span>: names, emails, phone numbers, ID or account numbers, addresses.</li>
+    <li>Other sensitive categories: health data, financial account data, confidential client information, trade secrets, credentials.</li>
+    <li><strong>Data minimisation</strong>: share only what the task needs.</li>
+    <li><strong>Anonymise, pseudonymise, or redact</strong> identifiers before uploading when policy restricts them. This lets the task go ahead safely (official sample 3).</li>
+    <li>Use the <strong>approved workspace</strong> (e.g., the company’s Team/Enterprise account) for work data, not personal accounts, if policy says so.</li>
+    <li>Regulations such as GDPR or sector rules may apply; when in doubt, ask the data owner, legal, or the AI governance contact <em>before</em> uploading.</li>
+  </ul>
+  <div class="key"><div class="lbl">Key rule</div><p>An instruction to the model (“don’t retain this”, “forget this”) is not a data control. Controls are things like anonymisation, approved accounts, admin settings, and policy.</p></div>
+
+  <h3>Organisational AI policy</h3>
+  <p>Know and follow your organisation’s AI policy: approved tools and accounts, permitted data types, required reviews, disclosure rules, and who to ask. If the policy is unclear, ask before acting. Report incidents (e.g., data shared by mistake) through the proper channel.</p>
+
+  <h3>Ethical implications</h3>
+  <ul>
+    <li><strong>Bias and fairness</strong>: outputs can reflect biases in training data; review content that affects people.</li>
+    <li><strong>Transparency</strong>: disclose AI use where expected by policy, clients, or context.</li>
+    <li><strong>Accountability</strong>: the human and organisation using the output remain responsible.</li>
+    <li><strong>Over-reliance</strong>: keep human judgement and expertise in the loop.</li>
+    <li><strong>Intellectual property</strong>: respect copyright and confidentiality.</li>
+  </ul>
+
+  <div class="ua"><div class="lbl">🇺🇦 Простими словами</div>
+  <p>Перед завантаженням файлу питай себе: чи дозволяє політика компанії ці дані? Якщо там імена, телефони, номери рахунків — <strong>прибери або знеособ їх</strong>, тоді аналіз можна робити. Фраза «Claude, не запам’ятовуй» — це НЕ захист даних. Використовуй робочий (корпоративний) акаунт, а не особистий. Рішення про людей (найм, кредит, лікування) не можна віддавати повністю ШІ. Відповідальність за результат завжди на людині.</p></div>
+
+  <div class="trap"><div class="lbl">Exam traps</div>
+  <ul>
+    <li>“It’s only internal analysis, so upload as-is” ignores policy.</li>
+    <li>“Skip the task entirely” is usually wrong when anonymisation or an approved route makes it possible.</li>
+    <li>Asking the model to delete or not remember data is not compliance.</li>
+  </ul></div>
+
+  <div class="quiz" data-quiz="d6"></div>
+  <div class="done-row"><button class="done-btn" data-done="d6">Mark as studied</button></div>
+</section>
+
+<!-- ============ D7 ============ -->
+<section class="sheet" id="d7" data-module="d7">
+  <h2>Domain 7. Troubleshooting and Optimization</h2>
+  <p class="weight">10% of the exam · about 6 questions</p>
+
+  <h3>Official objectives</h3>
+  <ul>
+    <li>Identify, diagnose, and resolve issues with underperforming prompts or poor outputs</li>
+    <li>Adjust approach based on feedback and results</li>
+    <li>Optimise workflows for efficiency and effectiveness</li>
+  </ul>
+
+  <h3>Diagnose the cause, then fix the input</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr>
+    <tr><td>Generic, bland output</td><td>Missing context, audience, purpose</td><td>Add context, audience, an example</td></tr>
+    <tr><td>Wrong format</td><td>Format not stated, buried, or contradicted</td><td>State the format explicitly; show an example; remove conflicting instructions</td></tr>
+    <tr><td>Invented facts</td><td>Not grounded in sources; no permission to say “unknown”</td><td>Restrict to provided documents; require quotes; allow “not in sources”</td></tr>
+    <tr><td>Outdated facts</td><td>Training cutoff, or stale Project files</td><td>Use web search/Research; update knowledge files</td></tr>
+    <tr><td>Forgets earlier instructions</td><td>Very long conversation</td><td>Summarise and restart; move durable rules to Project instructions</td></tr>
+    <tr><td>Inconsistent results across a team</td><td>Everyone uses their own prompt</td><td>Shared Project, template prompt, or Skill</td></tr>
+    <tr><td>Shallow reasoning on hard tasks</td><td>Model or feature too light for the task</td><td>More capable model, extended thinking, decomposition</td></tr>
+    <tr><td>Slow or costly at scale</td><td>Over-powered model for simple work</td><td>Faster, lower-cost model; batch similar tasks</td></tr>
+  </table></div>
+
+  <h3>Working from feedback</h3>
+  <ul>
+    <li>Collect specific feedback from users and stakeholders (what was wrong, with examples).</li>
+    <li>Change one variable at a time and test on the same set of examples, so you know what worked.</li>
+    <li>If a change makes things worse, revert it.</li>
+    <li>Turn fixes into reusable assets: updated Project instructions, templates, Skills.</li>
+  </ul>
+
+  <h3>Optimising workflows</h3>
+  <ul>
+    <li>Stop re-pasting the same context: put it in a Project.</li>
+    <li>Use templates or Skills for recurring tasks.</li>
+    <li>Right-size the model for each step.</li>
+    <li>Decompose so that review effort lands where risk is highest.</li>
+    <li>Measure effectiveness (quality) as well as efficiency (time, cost).</li>
+  </ul>
+
+  <div class="ua"><div class="lbl">🇺🇦 Простими словами</div>
+  <p>Поганий результат — це майже завжди проблема <strong>вхідних даних</strong>: бракує контексту, нечіткий формат, суперечливі інструкції, застарілий файл, не та модель. Спочатку знайди причину, потім змінюй <strong>одну річ за раз</strong> і перевіряй. Не тисни «regenerate» десять разів. Те, що спрацювало, збережи в інструкціях Project, шаблоні чи Skill.</p></div>
+
+  <div class="trap"><div class="lbl">Exam traps</div>
+  <ul>
+    <li>Regenerating repeatedly without changing the prompt.</li>
+    <li>Changing many things at once, so you can’t tell what helped.</li>
+    <li>Blaming the model before checking for stale knowledge files or conflicting instructions.</li>
+  </ul></div>
+
+  <div class="quiz" data-quiz="d7"></div>
+  <div class="done-row"><button class="done-btn" data-done="d7">Mark as studied</button></div>
+</section>
+
+<!-- ============ MOCK ============ -->
+<section class="sheet" id="mock" data-module="mock">
+  <h2>Mock exam</h2>
+  <p class="weight">30 questions across all seven domains, weighted like the real exam · answers revealed after you submit</p>
+  <p>Treat it like the real thing: no notes, about 60 minutes. The real exam reports a scaled score (720 to pass), which isn’t a simple percentage. As a safe target, aim for 80% or more here, and look at your weakest domain in the breakdown.</p>
+  <div class="quiz" data-quiz="mock" data-mode="exam"></div>
+</section>
+
+<!-- ============ GLOSSARY ============ -->
+<section class="sheet" id="glossary" data-module="glossary">
+  <h2>Glossary</h2>
+  <p class="weight">Key terminology with Ukrainian explanations</p>
+  <input class="gl-search" id="glSearch" type="search" placeholder="Filter terms" aria-label="Filter glossary terms">
+  <dl class="gl" id="glList"></dl>
+  <div class="done-row"><button class="done-btn" data-done="glossary">Mark as studied</button></div>
+</section>
+
+<footer>
+  <p>Independent study guide. Not affiliated with or endorsed by Anthropic. Based on the public Claude Certified Associate – Foundations Exam Guide v1.0 (July 2026), the Claude Help Center, and Anthropic Academy course materials. Practice questions are original and are not taken from the real exam.</p>
+</footer>
+</main>
+</div>
+
+<script>
+/* ===================== DATA ===================== */
+const DOMAINS = [
+  {id:"d1", name:"Prompting", w:14, c:"var(--d1)"},
+  {id:"d2", name:"Output evaluation", w:21, c:"var(--d2)"},
+  {id:"d3", name:"Product & model", w:12, c:"var(--d3)"},
+  {id:"d4", name:"Workflow & design", w:16, c:"var(--d4)"},
+  {id:"d5", name:"Configuration", w:12, c:"var(--d5)"},
+  {id:"d6", name:"Governance", w:15, c:"var(--d6)"},
+  {id:"d7", name:"Troubleshooting", w:10, c:"var(--d7)"}
+];
+const MODULES = ["start","fluency","d1","d2","d3","d4","d5","d6","d7","mock","glossary"];
+
+const Q = {
+fluency: [
+ {q:"A team lead is deciding which parts of a quarterly reporting process Claude should handle and which should stay with analysts. Which AI Fluency competency is the lead mainly using?",
+  o:["Description","Delegation","Discernment","Diligence"], a:[1],
+  why:"Delegation is deciding whether, when, and how to bring AI into a task, and how to divide work between people and AI.",
+  ua:"Delegation — рішення «що робить ШІ, а що людина»."},
+ {q:"A marketer works back and forth with Claude to develop a campaign concept, each building on the other’s ideas. Which mode of human–AI interaction is this?",
+  o:["Automation","Agency","Augmentation","Delegation"], a:[2],
+  why:"Augmentation is collaborative thinking with AI. Automation is AI carrying out a defined task; Agency is configuring AI to act independently. Delegation is a competency, not a mode.",
+  ua:"Augmentation — спільна творча робота з ШІ як з партнером."},
+ {q:"Before sending a report to a client, a consultant notes that it was drafted with Claude and reviewed by the team, as the client contract requires. Which aspect of Diligence does this show?",
+  o:["Creation diligence","Transparency diligence","Process discernment","Product description"], a:[1],
+  why:"Transparency diligence is being honest about AI’s role with the people affected by the work.",
+  ua:"Прозорість — чесно повідомити, що використовувався ШІ."},
+ {q:"Claude confidently states a market figure that changed last month. What best explains this?",
+  o:["Claude deliberately withholds recent data","Claude’s built-in knowledge has a training cutoff and it generates plausible text rather than looking facts up","Claude only answers correctly when asked twice","The prompt was too short"], a:[1],
+  why:"LLMs predict plausible text from training data with a cutoff. Recent facts need web search, Research, or provided documents.",
+  ua:"У моделі є дата «зрізу знань», і вона генерує правдоподібний текст, а не шукає в базі."},
+ {q:"Claude’s final numbers in an analysis are right, but its explanation of how it reached them skips a logical step. Which kind of discernment catches this?",
+  o:["Product discernment","Process discernment","Performance discernment","Deployment diligence"], a:[1],
+  why:"Process discernment evaluates the reasoning and approach, not just the final output (product).",
+  ua:"Process discernment — оцінка логіки/ходу думок, а не лише результату."},
+ {q:"Which TWO are limitations an Associate should plan for when using Claude? (Choose TWO.)",
+  o:["Claude can produce specific-looking details that are false","Claude cannot read uploaded documents","The context window is finite, so very long conversations can lose earlier details","Claude gives the identical wording every time for the same prompt"], a:[0,2],
+  why:"Hallucinations and finite context are real limits. Claude can read uploads, and its output is non-deterministic.",
+  ua:"Галюцинації і обмежене контекстне вікно — реальні обмеження."}
+],
+d1: [
+ {q:"A product manager’s prompt “Write about our new feature” returns a generic paragraph. What is the most effective improvement?",
+  o:["Ask Claude to try harder","Add the audience, purpose, key points, tone, length, and desired format","Switch to a different chat","Add “be accurate” at the end"], a:[1],
+  why:"Generic output usually means missing context. Specifying audience, purpose, content, constraints and format fixes the cause.",
+  ua:"Додай контекст: для кого, навіщо, що сказати, тон, довжина, формат."},
+ {q:"An analyst needs a competitive analysis, a pricing recommendation based on it, and an executive email summarising both. What approach best fits?",
+  o:["One long prompt asking for all three at once","Decompose into sequential steps, reviewing each output before using it in the next","Ask for the email first, then the analysis","Use only the pricing recommendation"], a:[1],
+  why:"Task decomposition (prompt chaining) makes each step manageable and lets you catch errors before they carry forward.",
+  ua:"Розбий на кроки і перевіряй кожен — так помилки не «перетікають» далі."},
+ {q:"Claude’s first draft of a policy summary is too long and too technical for frontline staff. What is the best next step?",
+  o:["Regenerate the same prompt several times","Give specific feedback: target length, reading level, and which details to keep","Start over in a new chat with the same prompt","Accept it and let staff ask questions"], a:[1],
+  why:"Effective iteration means specific, targeted feedback that changes the input.",
+  ua:"Ітерація = конкретний фідбек, а не «перегенерувати»."},
+ {q:"A team wants fresh ideas for an event theme. Which prompting strategy fits brainstorming best?",
+  o:["Ask for the single best idea","Ask for many varied ideas without judging them, then narrow down with criteria in a follow-up","Ask Claude to pick based on what competitors did","Give a strict one-idea format"], a:[1],
+  why:"Brainstorming benefits from quantity and variety first, evaluation second.",
+  ua:"Спочатку багато різних ідей, потім відбір за критеріями."},
+ {q:"An operations lead uploads survey results and asks “What do these say?”. Which revision best suits an analysis task?",
+  o:["“Summarise this nicely.”","“Using the attached data, identify the top three drivers of dissatisfaction, show the figures behind each, and separate findings from your interpretation.”","“Be creative with the data.”","“Write a blog post about the survey.”"], a:[1],
+  why:"Analysis prompts should state the question, criteria, and ask Claude to show the basis for conclusions.",
+  ua:"Для аналізу: чітке питання + критерії + «покажи, на чому базуєш висновок»."},
+ {q:"A coordinator needs 40 meeting summaries in exactly the same structure. What helps most with consistency?",
+  o:["Ask Claude to be consistent","Include an example of a correctly formatted summary in the prompt","Use capital letters for the instructions","Write each summary request differently"], a:[1],
+  why:"Examples (few-shot prompting) are among the most reliable ways to lock in format and style.",
+  ua:"Покажи приклад — це найкращий спосіб отримати однаковий формат."},
+ {q:"Which TWO prompt changes most reduce the risk of invented details in a document summary? (Choose TWO.)",
+  o:["Instruct Claude to answer only from the attached documents and quote supporting passages","Tell Claude to be 100% accurate","Allow Claude to state when information isn’t in the documents","Ask for a longer, more detailed answer"], a:[0,2],
+  why:"Grounding in sources and permission to say “not found” reduce hallucination. Demanding accuracy or length doesn’t.",
+  ua:"Обмеж джерелами + дозволь сказати «цього немає в документах»."}
+],
+d2: [
+ {q:"Claude’s draft for a client deck includes a statistic with a named report and a URL. What is the most appropriate action before using it?",
+  o:["Keep it, since a URL is provided","Ask Claude whether the statistic is correct","Open the source and confirm the figure appears there before including it","Remove the URL but keep the number"], a:[2],
+  why:"Specific figures and citations are classic hallucination risks; verify against the actual source. Asking Claude doesn’t verify.",
+  ua:"Відкрий джерело і перевір, що цифра там справді є."},
+ {q:"In Claude’s contract summary, the term is listed as 24 months in one section and 36 months in another. What should the associate do?",
+  o:["Use whichever figure appears more often","Check the original contract and correct the summary","Ask Claude to pick one","Remove the term from the summary"], a:[1],
+  why:"Inconsistencies are resolved against the authoritative source document.",
+  ua:"Суперечність вирішуємо за оригіналом договору."},
+ {q:"A Claude-drafted job advert asks for “young, energetic digital natives”. What is the most appropriate response?",
+  o:["Publish it, since Claude wrote it","Revise to inclusive, criteria-based wording and have HR review it","Add more adjectives","Ask Claude to rate its fairness"], a:[1],
+  why:"This is biased language that could discriminate by age. Revise it and apply human review for content affecting people.",
+  ua:"Це упереджена мова (вік). Виправити і дати HR перевірити."},
+ {q:"Which TWO outputs most clearly need expert human review before use? (Choose TWO.)",
+  o:["A list of team-lunch venue ideas","A drafted amendment to a client contract","A recommendation on which loan applicants to reject","Alternative subject lines for an internal newsletter"], a:[1,2],
+  why:"Legal documents and decisions affecting people are high-stakes. The others are low-risk drafts.",
+  ua:"Юридичні документи та рішення щодо людей — обов’язково перевірка експертом."},
+ {q:"A 15-page technical assessment must be shared with the executive team. What is the best adaptation?",
+  o:["Send the full technical text","Lead with business impact and decisions needed, in plain language, keeping the facts unchanged","Make it more technical so it looks rigorous","Only change the font"], a:[1],
+  why:"Adapting for the audience means changing structure, depth and language, never the facts.",
+  ua:"Для керівництва: спочатку вплив на бізнес і рішення, простими словами."},
+ {q:"A team will reuse and edit a two-page onboarding checklist over the coming months. Which output format fits best?",
+  o:["Inline chat text","An artifact","A JSON object","A single-sentence summary"], a:[1],
+  why:"Artifacts suit substantial, standalone content that will be reused, edited and shared.",
+  ua:"Артефакт — для об’ємного документа, який будуть редагувати і використовувати."},
+ {q:"Claude produced two versions of a proposal section. How should the associate choose between them?",
+  o:["Pick the longer one","Pick the one that sounds more confident","Compare both against the requirements, source accuracy, and audience fit","Pick the first one generated"], a:[2],
+  why:"Comparison should use explicit criteria, not length or tone.",
+  ua:"Порівнюй за критеріями (вимоги, точність, аудиторія), а не за довжиною."},
+ {q:"An associate reviews a long Claude research summary with limited time. Which approach is best?",
+  o:["Regenerate it and accept it if the answer matches","Prioritise verifying high-risk claims (figures, names, dates, citations, quotes) against authoritative sources","Check only the introduction","Ask Claude to confirm everything is correct"], a:[1],
+  why:"Risk-based fact-checking focuses verification on the claims most likely to be wrong and most costly if wrong. Consistent answers aren’t evidence of accuracy.",
+  ua:"Перевіряй найризикованіше: цифри, імена, дати, посилання, цитати."}
+],
+d3: [
+ {q:"An account manager writes weekly client updates that always use the same brand guide, client background, and template. Which feature fits best?",
+  o:["A new chat each week, re-pasting everything","A Project with the guide and background as knowledge and the template rules in instructions","Research mode","Incognito chat"], a:[1],
+  why:"Projects hold reusable context (knowledge and instructions) for recurring work.",
+  ua:"Повторювана робота з тим самим контекстом → Project."},
+ {q:"A strategist needs a cited overview of how five competitors changed pricing this quarter, drawing on many current web sources. Which feature fits best?",
+  o:["Plain chat without tools","Research","Artifacts","Memory"], a:[1],
+  why:"Research runs multiple searches that build on each other and returns a cited report, ideal for current, multi-source questions.",
+  ua:"Глибоке дослідження актуальних джерел із посиланнями → Research."},
+ {q:"A team must analyse a complex merger scenario with many interdependent factors; quality matters far more than speed or cost. Which model choice fits best?",
+  o:["Haiku","Opus","The cheapest model available","It doesn’t matter"], a:[1],
+  why:"Opus is the most capable of the three, suited to complex reasoning where quality is the priority.",
+  ua:"Складний аналіз, якість важливіша за ціну → Opus."},
+ {q:"For routine drafting and summarisation across a department, balancing quality, speed and cost, which model is usually the sensible default?",
+  o:["Sonnet","Opus for everything","Haiku for everything","No model"], a:[0],
+  why:"Sonnet balances intelligence, speed, and cost for most everyday business work.",
+  ua:"Щоденна робота, баланс → Sonnet."},
+ {q:"After a very long conversation, Claude starts ignoring constraints agreed at the beginning. What is the best action?",
+  o:["Keep going in the same chat","Ask Claude to summarise key decisions and constraints, then continue in a new chat (and store durable rules in a Project)","Switch to the smallest model","Delete the constraints"], a:[1],
+  why:"Managing context means summarising and restarting, and persisting durable context where it belongs.",
+  ua:"Підсумок → новий чат; постійні правила → у Project."},
+ {q:"A user needs an interactive budget calculator to iterate on and share with colleagues. Which feature fits?",
+  o:["Inline text","An artifact","Research","Incognito chat"], a:[1],
+  why:"Artifacts support standalone, interactive, shareable content.",
+  ua:"Інтерактивний інструмент для спільного використання → артефакт."},
+ {q:"Which TWO statements about memory and context are accurate? (Choose TWO.)",
+  o:["Each Project has its own memory, separate from other Projects","Claude automatically reads every past chat in every Project","Incognito chats are not saved to chat history or memory","The context window is unlimited"], a:[0,2],
+  why:"Project memory is separate per Project, and incognito chats are excluded from history and memory.",
+  ua:"У кожного Project своя пам’ять; incognito не зберігається."}
+],
+d4: [
+ {q:"A department head asks you to “use Claude to improve the proposal process”. What should you do first?",
+  o:["Give everyone Claude access immediately","Map the current process, identify bottlenecks and requirements, and define success measures","Write a company-wide AI announcement","Replace the proposal team’s review step"], a:[1],
+  why:"Solution design starts with understanding requirements and the current workflow before deciding where Claude fits.",
+  ua:"Спочатку зрозумій процес і де «болить», визнач метрики успіху."},
+ {q:"A support team receives thousands of feedback messages that need tagging by topic using clear rules. Errors are low-risk. What is a sensible design?",
+  o:["Have Claude tag them with periodic human spot-checks","Have a senior manager tag every message","Don’t use AI because any error is unacceptable","Use the most expensive model and no checks"], a:[0],
+  why:"High-volume, rule-based, low-risk work suits automation with proportionate quality checks.",
+  ua:"Масова, проста, низькоризикова робота → автоматизація з вибірковою перевіркою."},
+ {q:"A finance director is sceptical about Claude. What is the most effective way to communicate its value?",
+  o:["Promise it is always accurate","Share pilot results (time saved, quality) and explain its limitations and where human review stays","Avoid mentioning limitations","Show a demo of unrelated features"], a:[1],
+  why:"Credible stakeholder communication uses evidence and is honest about limits.",
+  ua:"Факти з пілоту + чесно про обмеження і контроль людиною."},
+ {q:"A client wants Claude connected to their CRM via API so an automated agent updates records. What should the associate do?",
+  o:["Build it themselves through trial and error","Escalate to a Claude Developer or Architect","Tell the client it can’t be done","Paste CRM exports into chat daily"], a:[1],
+  why:"API integrations and agentic systems are outside the Associate scope; escalate.",
+  ua:"API та агенти — ескалація до розробника/архітектора."},
+ {q:"A project manager has notes from five stakeholder interviews. How can Claude best support requirements analysis?",
+  o:["Ask Claude to invent requirements","Ask Claude to extract requirements, flag conflicts and ambiguities, and list open questions for follow-up","Ask Claude to pick the stakeholder who is right","Skip analysis and start building"], a:[1],
+  why:"Claude is useful for structuring requirements and surfacing gaps; humans then resolve them.",
+  ua:"Claude виділяє вимоги, суперечності й відкриті питання."},
+ {q:"Which TWO metrics best show whether a Claude-assisted workflow pilot succeeded? (Choose TWO.)",
+  o:["Time per task compared with the baseline","Number of prompts written","Quality or error rate compared with the baseline","Average length of Claude’s responses"], a:[0,2],
+  why:"Business value is measured against a baseline on efficiency and quality.",
+  ua:"Час на задачу і якість/помилки — у порівнянні з «до»."}
+],
+d5: [
+ {q:"A team wants every chat in its Project to use a formal tone and a fixed report structure. Where should this go?",
+  o:["Repeat it in each chat","Project instructions","A knowledge file named “misc”","Memory, by saying it once"], a:[1],
+  why:"Project instructions apply standing guidance to every chat in the Project.",
+  ua:"Постійні правила → інструкції Project."},
+ {q:"A Project’s knowledge contains “doc1.pdf”, “final.pdf”, and both the 2025 and 2026 price lists. Answers sometimes quote old prices. What is the best fix?",
+  o:["Ask Claude to prefer newer prices","Rename files descriptively and remove the outdated price list","Add a third price list","Switch models"], a:[1],
+  why:"Clear naming and a single current version prevent conflicting answers.",
+  ua:"Зрозумілі назви + видалити застарілу версію."},
+ {q:"Which is the strongest set of Project instructions for a customer-communications Project?",
+  o:["“Be helpful.”","A detailed account of one past customer complaint","Role, audience, tone, format, how to use the knowledge files, and what to do when information is missing","“Never make mistakes.”"], a:[2],
+  why:"Effective system-level instructions are specific, durable and general; task details belong in individual chats.",
+  ua:"Роль, аудиторія, тон, формат, як користуватись файлами, що робити якщо даних немає."},
+ {q:"A team keeps uploading copies of documents that change weekly in Google Drive. What is a better approach?",
+  o:["Keep uploading copies","Use an approved Google Drive connector so Claude can access current files, within permissions","Email the files to Claude","Stop using the documents"], a:[1],
+  why:"Connectors give access to current data instead of stale copies, within policy and permissions.",
+  ua:"Конектор Google Drive — завжди актуальні файли."},
+ {q:"Company refund policy changed today. What should the Project owner do?",
+  o:["Nothing; Claude will notice","Replace the policy file, remove the old version, adjust instructions if needed, and test with typical questions","Tell users to remember the change","Delete the whole Project"], a:[1],
+  why:"Maintaining configuration means updating knowledge and instructions, then testing.",
+  ua:"Онови файл, видали старий, протестуй."},
+ {q:"Which TWO are good practices for connectors? (Choose TWO.)",
+  o:["Connect only what the task needs","Connect all accounts by default","Follow your organisation’s approval and admin settings","Share login credentials with teammates"], a:[0,2],
+  why:"Least privilege and organisational governance apply to connectors.",
+  ua:"Мінімально необхідний доступ + політика компанії."}
+],
+d6: [
+ {q:"Which use of Claude is most appropriate?",
+  o:["Automatically rejecting job applicants based on Claude’s ranking alone","Drafting interview questions that the hiring team reviews","Writing fake customer reviews for the website","Making final medical decisions for patients"], a:[1],
+  why:"Drafting with human review is appropriate. Sole automated decisions about people, deception, and unreviewed medical decisions are not.",
+  ua:"Чернетка + перевірка людиною = ок. Рішення про людей без людини, фейки = ні."},
+ {q:"An analyst wants to analyse support tickets that include customer emails and phone numbers. Policy restricts sharing personal data. What is the most appropriate action?",
+  o:["Upload as-is because the analysis is internal","Remove or anonymise the identifiers, then upload","Upload and ask Claude not to remember the data","Cancel the analysis"], a:[1],
+  why:"Anonymisation lets the task proceed within policy. Telling the model not to retain data is not a control.",
+  ua:"Знеособ дані → тоді аналіз можна робити."},
+ {q:"Policy requires confidential client data to be used only in the company’s approved Claude workspace. An employee prefers their personal account. What is correct?",
+  o:["Personal is fine if it’s faster","Use the approved company workspace","Use personal but delete the chat afterwards","Use incognito in the personal account"], a:[1],
+  why:"Follow organisational AI policy and use approved tools for work data.",
+  ua:"Тільки корпоративний (схвалений) акаунт."},
+ {q:"An employee is unsure whether a dataset may be uploaded under the AI policy. What should they do?",
+  o:["Upload it and see","Ask the data owner or AI governance contact before uploading","Upload half of it","Rename the file first"], a:[1],
+  why:"When policy is unclear, clarify before acting.",
+  ua:"Не впевнена — спитай відповідальну особу ДО завантаження."},
+ {q:"A Claude-assisted market report sent to a client contained an error. Who is accountable?",
+  o:["Claude","Anthropic","The person and organisation that reviewed and sent the report","No one, since AI was involved"], a:[2],
+  why:"Deployment diligence: the human and organisation using the output remain accountable.",
+  ua:"Відповідальність — на людині й компанії, що відправили звіт."},
+ {q:"A manager says: “Just tell Claude to forget the salary data after it’s done.” Why is this not sufficient?",
+  o:["Claude doesn’t understand the word “forget”","An instruction to the model isn’t a data-protection control; policy-compliant handling (such as anonymisation or not uploading) is","It is sufficient","Because Claude will forget anyway"], a:[1],
+  why:"Real controls are anonymisation, approved accounts, admin settings and policy, not prompts.",
+  ua:"Прохання «забудь» — не захист даних."},
+ {q:"Which TWO are ethical implications of AI use an Associate should consider? (Choose TWO.)",
+  o:["Outputs may reflect biases from training data","Claude types faster than people","Over-reliance can weaken human judgement and expertise","AI makes documents longer"], a:[0,2],
+  why:"Bias and over-reliance are core ethical considerations, alongside transparency and accountability.",
+  ua:"Упередженість і надмірна залежність від ШІ."}
+],
+d7: [
+ {q:"Claude keeps returning bullet lists although the team needs a table. The instruction is in the middle of a long prompt. What is the best fix?",
+  o:["Regenerate until a table appears","State the table format explicitly and clearly, with an example, and remove conflicting instructions","Switch to a smaller model","Ask for bullet lists instead"], a:[1],
+  why:"Diagnose (buried/unclear format) and fix the input.",
+  ua:"Чітко вкажи формат + приклад, прибери суперечливі інструкції."},
+ {q:"Five team members get very different quality when using Claude for the same weekly report. What is the best fix?",
+  o:["Let each person keep their own prompt","Create a shared Project or template (or Skill) with agreed instructions and examples","Use five different models","Stop the report"], a:[1],
+  why:"Standardised configuration produces consistent results.",
+  ua:"Спільний Project/шаблон/Skill для всіх."},
+ {q:"A Project assistant quotes last year’s prices. What should be checked first?",
+  o:["Whether the model is broken","Whether the Project’s knowledge files are outdated or duplicated","The user’s internet connection","The chat’s font"], a:[1],
+  why:"Stale or duplicated knowledge files are a common cause of outdated answers.",
+  ua:"Перевір, чи не застарілі файли в Project."},
+ {q:"Stakeholders say Claude’s customer emails sound too casual. What is the best adjustment?",
+  o:["Ignore the feedback","Update the instructions with specific tone guidance and an example, then test on sample emails","Ask stakeholders to rewrite every email","Use a different language"], a:[1],
+  why:"Adjust based on feedback with specific changes, then test.",
+  ua:"Конкретні правила тону + приклад, потім тест."},
+ {q:"A workflow uses the most capable model to classify thousands of short, simple tickets, and it’s slow and costly. What optimisation fits best?",
+  o:["Keep the same model","Use a faster, lower-cost model for this step and batch similar items","Add more instructions","Classify manually"], a:[1],
+  why:"Right-size the model to the task for efficiency.",
+  ua:"Для простих масових задач — легша і дешевша модель."},
+ {q:"After several prompt edits, results are worse and nobody knows why. What is the best approach?",
+  o:["Keep adding more instructions","Revert, then change one element at a time and test on the same examples","Start using a new tool","Accept the current results"], a:[1],
+  why:"Controlled, one-variable-at-a-time testing isolates what works.",
+  ua:"Відкат і зміна однієї речі за раз."}
+],
+mock: [
+ {d:"d1",q:"An HR manager asks Claude “Make onboarding better” and gets vague advice. What is the best next step?",
+  o:["Ask the same question again","Provide the current onboarding steps, known pain points, the audience, and the desired output (e.g., a 30-60-90 day plan table)","Switch to Research","Ask Claude to be more specific"], a:[1],
+  why:"Missing context is the root cause; supply it with a clear output format."},
+ {d:"d1",q:"Which prompt best suits a research task?",
+  o:["“Tell me about electric buses.”","“Find adoption figures for electric buses in EU cities since 2023, prioritise official and industry sources, and cite each figure.”","“Write a poem about buses.”","“Give me your opinion on buses.”"], a:[1],
+  why:"Research prompts define the question, scope, source quality, and citations."},
+ {d:"d1",q:"What is the main benefit of giving Claude a role such as “You are an experienced procurement analyst”?",
+  o:["It guarantees accuracy","It frames the expertise, perspective, and vocabulary of the response","It increases the context window","It switches the model"], a:[1],
+  why:"A role sets perspective and expertise; it doesn’t guarantee accuracy."},
+ {d:"d1",q:"Which TWO are examples of task decomposition? (Choose TWO.)",
+  o:["Extract key facts from transcripts first, then draft the summary from the checked facts","Ask for the full 20-page report in one prompt","Agree an outline before Claude writes the full draft","Regenerate the answer five times"], a:[0,2],
+  why:"Decomposition splits the work into checkable steps."},
+ {d:"d2",q:"A press-release draft from Claude includes a quote attributed to the company’s CEO. What is the most appropriate action?",
+  o:["Publish it; it sounds like the CEO","Confirm the CEO actually said or approved it, otherwise remove it","Make the quote longer","Ask Claude if the quote is real"], a:[1],
+  why:"Quotes are high-risk for fabrication; verify with the person or source."},
+ {d:"d2",q:"A summary of a contract leaves out the termination-risk clause entirely. Which evaluation dimension failed?",
+  o:["Tone","Completeness","Formatting","Speed"], a:[1],
+  why:"Leaving out important source content is a completeness failure."},
+ {d:"d2",q:"A user writes: “Our churn is obviously caused by price. Write the analysis.” What helps avoid a one-sided result?",
+  o:["Accept the premise","Ask Claude to assess evidence for and against the price explanation and consider alternative causes","Make the report longer","Use bold text"], a:[1],
+  why:"Models can mirror the user’s framing (sycophancy); ask for evidence on both sides."},
+ {d:"d2",q:"Results must be loaded into a BI dashboard. Which output format fits best?",
+  o:["A narrative paragraph","Structured data with consistent columns (table or CSV)","A slide deck","Inline bullet points"], a:[1],
+  why:"Structured data is right when output feeds another tool."},
+ {d:"d2",q:"Which TWO are warning signs of a possible hallucination? (Choose TWO.)",
+  o:["A precise statistic that doesn’t appear in the documents you provided","Clean formatting","A cited report title you can’t find anywhere","A response in the language you asked for"], a:[0,2],
+  why:"Unsupported specifics and unfindable sources are classic hallucination signs."},
+ {d:"d2",q:"An associate is about to send a Claude-written summary of a new tax rule to the finance team. The summary cites a specific article number. What should they do?",
+  o:["Send it, since it cites an article","Check the cited article in the official text first","Ask Claude for a confidence rating","Reformat the summary to look official"], a:[1],
+  why:"Verify specific citations against the authoritative source before sharing."},
+ {d:"d3",q:"A colleague wants one sentence rephrased more politely. Which feature is appropriate?",
+  o:["A new Project","Research","A regular chat","Cowork"], a:[2],
+  why:"Simple one-off tasks need only a regular chat."},
+ {d:"d3",q:"A team must translate 5,000 short, simple product descriptions on a tight budget. Which model fits best?",
+  o:["Haiku","Opus","Whichever is most expensive","None, do it manually"], a:[0],
+  why:"Fast, low-cost models suit high-volume straightforward tasks."},
+ {d:"d3",q:"A campaign chat has run for weeks; replies are slower and miss earlier constraints. What should the user do?",
+  o:["Continue in the same chat","Summarise key decisions into a new chat and keep durable material in Project knowledge","Delete the constraints","Switch to incognito"], a:[1],
+  why:"Restart with a summary, and persist durable context."},
+ {d:"d3",q:"A team wants Claude to apply the company’s report-writing procedure, with templates, whenever a report is requested. Which feature is designed for this?",
+  o:["Skills","Incognito chat","Web search","Extended thinking"], a:[0],
+  why:"Skills package instructions and resources that Claude loads when relevant."},
+ {d:"d4",q:"Which task is the best first candidate for Claude in a sales team?",
+  o:["Final pricing approval for a major deal","Drafting first versions of follow-up emails that reps review and personalise","Signing contracts","Deciding which employees to promote"], a:[1],
+  why:"Repetitive, language-heavy work with human review is a strong candidate."},
+ {d:"d4",q:"An operations lead wants to redesign the purchase-approval process. How can Claude help most appropriately?",
+  o:["Approve purchases itself","Analyse the process documentation and propose an optimised workflow for stakeholders to validate","Replace the finance team","Write the company’s AI policy alone"], a:[1],
+  why:"Claude supports process optimisation; people validate and decide."},
+ {d:"d4",q:"Sales reps expect Claude to automatically know this month’s product prices. What should the associate explain?",
+  o:["Claude knows all current prices","Claude needs an up-to-date source (Project knowledge or a connector), and outputs should still be checked","Prices don’t matter","Use a bigger model and it will know"], a:[1],
+  why:"Communicating limitations: current facts require current sources and verification."},
+ {d:"d4",q:"Marketing wants a customer-facing Claude chatbot embedded in the company website. What should the associate do?",
+  o:["Build it in a chat window","Escalate to a Claude Developer or Architect","Paste the website into a Project","Refuse the request"], a:[1],
+  why:"Embedding Claude in products is a technical build; escalate."},
+ {d:"d4",q:"A Claude-assisted proposal template works well except for unusual deal types. What is the best next step?",
+  o:["Abandon the template","Collect examples of the failures, refine the template, and re-test including edge cases","Ignore unusual deals","Tell users to stop giving feedback"], a:[1],
+  why:"Solution design is iterative: gather feedback, refine, re-test."},
+ {d:"d5",q:"Project instructions have grown to include detailed notes about one client’s past request. What should change?",
+  o:["Nothing","Move the task-specific details into the relevant chat and keep the instructions general and durable","Copy the notes twice","Delete the Project"], a:[1],
+  why:"Instructions should be durable; task specifics belong in the chat."},
+ {d:"d5",q:"On a Team plan, a colleague should be able to chat in a shared Project but must not change its instructions. Which permission fits?",
+  o:["Can edit","View-only (can view and chat, not edit)","Owner","No access"], a:[1],
+  why:"View permission allows using the Project without editing it."},
+ {d:"d5",q:"On a paid plan, what happens when a Project’s knowledge approaches the context limit?",
+  o:["Claude deletes the oldest files","Claude switches to retrieval (RAG), pulling relevant parts so the Project can hold much more","The Project stops working","Claude summarises and discards files"], a:[1],
+  why:"Paid plans automatically use RAG to expand Project knowledge capacity."},
+ {d:"d5",q:"Which TWO items belong in a marketing Project’s knowledge? (Choose TWO.)",
+  o:["The current brand style guide","Customers’ payment card numbers","The current product fact sheet","Team members’ passwords"], a:[0,2],
+  why:"Relevant, current, permitted reference material belongs in knowledge; sensitive credentials and payment data don’t."},
+ {d:"d6",q:"A manager asks Claude to write ten customer testimonials for the website. What is correct?",
+  o:["Write them; they’re only examples","Decline to fabricate testimonials; offer to help collect and edit real ones","Write them and add stock photos","Write them under fake names"], a:[1],
+  why:"Fabricated testimonials are deceptive and inappropriate."},
+ {d:"d6",q:"An HR specialist wants Claude to summarise exit interviews containing names and health details. Policy restricts personal data. What is the most appropriate action?",
+  o:["Upload everything; HR is allowed to see it","De-identify the data in line with policy before using Claude","Skip summarising forever","Paste it but tell Claude not to remember"], a:[1],
+  why:"Apply data-sensitivity safeguards so the task can proceed within policy."},
+ {d:"d6",q:"A team posts Claude-generated articles publicly. According to good practice, what should they do?",
+  o:["Hide AI involvement in all cases","Follow organisational disclosure rules and ensure a human reviews and owns the content","Publish without review","Let readers check facts"], a:[1],
+  why:"Transparency and accountability are core to responsible use."},
+ {d:"d6",q:"A colleague accidentally uploaded a file with client account numbers to a personal Claude account. What should they do?",
+  o:["Ignore it","Ask Claude to delete it and move on","Report it through the organisation’s incident or governance channel","Upload more files to dilute it"], a:[2],
+  why:"Follow governance standards, including reporting data incidents."},
+ {d:"d7",q:"Claude keeps adding facts that aren’t in the provided policy documents. What is the best fix?",
+  o:["Regenerate","Instruct Claude to answer only from the documents, quote its sources, and say when information isn’t there","Use a more casual tone","Remove the documents"], a:[1],
+  why:"Grounding and permission to say “not in sources” address fabrication."},
+ {d:"d7",q:"Everyone on a team pastes the same 300-word context into every chat. How can the workflow be optimised?",
+  o:["Keep pasting","Put the shared context into a Project’s knowledge or instructions","Shorten it to one word","Use incognito"], a:[1],
+  why:"Projects remove repetitive context-setting."},
+ {d:"d7",q:"After rewriting an entire prompt, output got worse. What is the best approach?",
+  o:["Rewrite again from scratch","Revert to the previous version, then change one element at a time and test on the same examples","Switch to Research","Accept it"], a:[1],
+  why:"Isolate variables to know what helps."}
+]
+};
+
+const GLOSSARY = [
+ ["4D Framework","Delegation, Description, Discernment, Diligence: the four AI Fluency competencies.","Чотири навички роботи з ШІ: делегування, опис, критична оцінка, відповідальність."],
+ ["Delegation","Deciding whether, when and how to use AI for a task; includes problem awareness, platform awareness, task delegation.","Що віддати ШІ, а що зробити самій."],
+ ["Description","Communicating clearly with AI: product, process and performance description.","Чітко пояснити ШІ, що потрібно."],
+ ["Discernment","Evaluating AI output, reasoning and behaviour critically.","Критично оцінити результат."],
+ ["Diligence","Responsible use: creation, transparency and deployment diligence.","Відповідальне використання і прозорість."],
+ ["Automation / Augmentation / Agency","Three interaction modes: AI does a defined task; human and AI collaborate; AI is configured to act independently.","Три режими: виконання задачі, співпраця, самостійна дія."],
+ ["LLM (large language model)","A model trained on large amounts of text that generates text by predicting likely continuations.","Велика мовна модель."],
+ ["Token","The small unit of text a model processes; context and limits are measured in tokens.","Шматочок тексту, в яких рахується контекст."],
+ ["Context window","The finite amount of text Claude can consider at once in a conversation.","Скільки тексту Claude «бачить» за раз."],
+ ["Training cutoff","The date after which the model’s built-in knowledge stops.","Дата, після якої модель нічого не знає без пошуку."],
+ ["Hallucination","Plausible-sounding but false or fabricated content (figures, citations, quotes).","Впевнено вигадана неправда."],
+ ["Sycophancy","A tendency to agree with the user’s framing or assumptions.","Схильність погоджуватися з користувачем."],
+ ["Non-deterministic","The same prompt can produce different outputs.","Однаковий запит може дати різні відповіді."],
+ ["Bias","Systematic unfairness or skew in outputs, often inherited from training data.","Упередженість."],
+ ["Prompt","The instructions and context you give Claude.","Запит/інструкція для Claude."],
+ ["Few-shot / multishot prompting","Including examples of the desired output in the prompt.","Дати приклади бажаного результату."],
+ ["XML tags","Labels like <document> used to separate parts of a prompt.","Теги для розділення частин промпту."],
+ ["Task decomposition","Breaking a complex request into smaller, checkable steps.","Розбити велику задачу на кроки."],
+ ["Prompt chaining","Using the output of one prompt as input to the next.","Ланцюжок промптів."],
+ ["Iteration","Improving output through specific, targeted feedback.","Покращення через конкретний фідбек."],
+ ["Grounding","Restricting Claude to provided sources and asking it to cite them.","Прив’язка відповіді до джерел."],
+ ["Fact-checking","Verifying claims against authoritative, independent sources.","Перевірка фактів за першоджерелом."],
+ ["Human-in-the-loop","A person reviews or approves AI output at defined points.","Людина перевіряє/затверджує результат."],
+ ["Chat","A single conversation with Claude.","Звичайна розмова."],
+ ["Project","A workspace with its own chat history, knowledge base, instructions and memory.","Робочий простір з файлами, інструкціями і пам’яттю."],
+ ["Project knowledge","Files uploaded to a Project that Claude uses as context in all its chats.","Файли в Project."],
+ ["Project instructions","Standing guidance applied to every chat in a Project.","Постійні інструкції для всіх чатів у Project."],
+ ["RAG (retrieval-augmented generation)","Retrieving only relevant parts of a large knowledge base; used automatically in Projects on paid plans as knowledge grows.","Пошук потрібних фрагментів у великій базі знань."],
+ ["Research (research mode)","Agentic feature that runs multiple searches building on each other and returns a cited report.","Глибоке дослідження з посиланнями."],
+ ["Web search","Claude searches the web within a normal reply for current information.","Пошук в інтернеті."],
+ ["Artifact","Standalone content (document, code, diagram, app) in a separate window that can be edited and shared.","Окремий документ/інструмент поруч із чатом."],
+ ["Extended thinking","Mode where Claude reasons longer before answering complex problems.","Розширене «обдумування» складних задач."],
+ ["Memory","Claude’s ability to carry relevant context across chats; Projects have separate memory.","Пам’ять між чатами."],
+ ["Incognito chat","A chat not saved to history or memory.","Чат, який не зберігається."],
+ ["Connector","An integration giving Claude access to tools like Google Drive, Gmail, Calendar.","Підключення до сервісів."],
+ ["MCP (Model Context Protocol)","The open standard behind many connectors.","Стандарт для підключення інструментів."],
+ ["Skill","A folder of instructions, scripts and resources Claude loads when relevant.","Пакет інструкцій для повторюваних задач."],
+ ["Code execution & file creation","Claude runs code to analyse data and create files.","Claude виконує код і створює файли."],
+ ["Cowork","Agentic mode for multi-step knowledge work across files and tools.","Агентний режим для багатокрокових задач."],
+ ["Haiku","Fastest, lowest-cost model family; high-volume simple tasks.","Швидка і дешева модель."],
+ ["Sonnet","Balanced model family for everyday work.","Збалансована модель."],
+ ["Opus","Most capable of the three families; complex reasoning.","Найпотужніша модель (з трьох)."],
+ ["PII","Personally identifiable information: names, emails, phone, ID and account numbers.","Персональні дані."],
+ ["Anonymisation / redaction","Removing or masking identifiers before using data.","Знеособлення/приховування даних."],
+ ["Data minimisation","Sharing only the data a task needs.","Ділитися лише необхідними даними."],
+ ["Least privilege","Granting only the access a task requires.","Мінімально необхідний доступ."],
+ ["AI governance / AI policy","Organisational rules on tools, data, review and disclosure.","Правила компанії щодо ШІ."],
+ ["Escalation","Handing complex/technical work (API, agents, integrations) to Claude Developers or Architects.","Передати технічну задачу розробникам."],
+ ["MQC","Minimally qualified candidate: the profile the exam’s pass standard is set against.","«Мінімально кваліфікований кандидат»."],
+ ["Scaled score","Score reported on 100–1,000; 720 passes.","Шкальний бал; прохідний 720."]
+];
+
+/* ===================== STATE ===================== */
+const KEY = "ccaof-study-v1";
+let S;
+function load(){ try{ S = JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ S = {}; } S.done = S.done||{}; S.quiz = S.quiz||{}; S.mock = S.mock||{}; }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} refreshProgress(); }
+load();
+
+/* ===================== HELPERS ===================== */
+const L = "ABCDEFGH";
+const eq = (a,b)=> a.length===b.length && a.every(x=>b.includes(x));
+function nWord(n){ return ["ONE","TWO","THREE"][n-1] || n; }
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ===================== PRACTICE QUIZ ===================== */
+function renderQuiz(el){
+  const id = el.dataset.quiz, qs = Q[id], exam = el.dataset.mode==="exam";
+  if(!S.quiz[id]) S.quiz[id] = {sel:{}, checked:{}};
+  const st = S.quiz[id];
+  let h = "";
+  if(exam){
+    h += `<div class="mock-bar"><span id="mockStatus"></span><span><button id="mockSubmit" class="primary">Submit exam</button> <button id="mockRetry">Start over</button></span></div><div id="mockResult"></div>`;
+  } else {
+    h += `<div class="quiz-title"><h3>Practice test</h3><span class="score" data-score="${id}"></span></div>`;
+  }
+  qs.forEach((q,i)=>{
+    const need = q.a.length;
+    h += `<div class="q" data-i="${i}"><div class="q-head">Question ${i+1} of ${qs.length} · Choose ${nWord(need)}${exam && q.d ? " · Domain "+q.d.slice(1) : ""}</div><div class="q-text">${esc(q.q)}</div>`;
+    q.o.forEach((o,j)=>{ h += `<button class="opt" data-j="${j}"><span class="ltr">${L[j]}</span><span>${esc(o)}</span></button>`; });
+    if(!exam) h += `<div class="q-actions"><button class="check primary">Check answer</button></div>`;
+    h += `<div class="fbwrap"></div></div>`;
+  });
+  if(!exam) h += `<button class="retry">Reset this test</button>`;
+  el.innerHTML = h;
+
+  el.querySelectorAll(".q").forEach(qe=>{
+    const i = +qe.dataset.i, q = qs[i];
+    qe.querySelectorAll(".opt").forEach(b=>{
+      b.addEventListener("click",()=>{
+        if(exam ? S.mock.submitted : st.checked[i]) return;
+        let sel = st.sel[i] || [];
+        const j = +b.dataset.j;
+        if(q.a.length===1) sel = [j];
+        else { sel = sel.includes(j) ? sel.filter(x=>x!==j) : (sel.length < q.a.length ? sel.concat(j) : sel); }
+        st.sel[i] = sel; save(); paintQ(el,qe,q,i,exam);
+        if(exam) mockStatus();
+      });
+    });
+    const c = qe.querySelector(".check");
+    if(c) c.addEventListener("click",()=>{
+      const sel = st.sel[i]||[];
+      if(sel.length!==q.a.length) return;
+      st.checked[i] = true; save(); paintQ(el,qe,q,i,exam); paintScore(id);
+    });
+    paintQ(el,qe,q,i,exam);
+  });
+  const r = el.querySelector(".retry");
+  if(r) r.addEventListener("click",()=>{ S.quiz[id] = {sel:{},checked:{}}; save(); renderQuiz(el); paintScore(id); });
+  if(exam){
+    el.querySelector("#mockSubmit").addEventListener("click",()=>{
+      const answered = Object.keys(st.sel).filter(k=>(st.sel[k]||[]).length===qs[k].a.length).length;
+      if(answered<qs.length && !confirm(`You answered ${answered} of ${qs.length}. Submit anyway?`)) return;
+      S.mock.submitted = true;
+      const r = gradeMock(); S.mock.attempts = (S.mock.attempts||0)+1; S.mock.best = Math.max(S.mock.best||0, r.pct); S.mock.last = r.pct;
+      save(); renderQuiz(el);
+      document.getElementById("mockResult").scrollIntoView({block:"start"});
+    });
+    el.querySelector("#mockRetry").addEventListener("click",()=>{
+      if(!confirm("Clear your answers and start the mock exam again?")) return;
+      S.quiz.mock = {sel:{},checked:{}}; S.mock.submitted = false; save(); renderQuiz(el);
+    });
+    mockStatus();
+    if(S.mock.submitted) showMockResult();
+  } else paintScore(id);
+}
+
+function paintQ(el,qe,q,i,exam){
+  const id = el.dataset.quiz, st = S.quiz[id], sel = st.sel[i]||[];
+  const reveal = exam ? !!S.mock.submitted : !!st.checked[i];
+  qe.querySelectorAll(".opt").forEach(b=>{
+    const j = +b.dataset.j;
+    b.classList.remove("sel","right","wrong");
+    if(reveal){
+      if(q.a.includes(j)) b.classList.add("right");
+      else if(sel.includes(j)) b.classList.add("wrong");
+    } else if(sel.includes(j)) b.classList.add("sel");
+    b.setAttribute("aria-pressed", sel.includes(j) ? "true":"false");
+  });
+  const c = qe.querySelector(".check");
+  if(c){ c.disabled = reveal || sel.length!==q.a.length; c.style.display = reveal ? "none":""; }
+  const fb = qe.querySelector(".fbwrap");
+  if(reveal){
+    const ok = eq(sel,q.a);
+    fb.innerHTML = `<div class="fb ${ok?"ok":"no"}"><span class="v">${ok?"Correct.":"Not quite."}</span> Answer: ${q.a.map(x=>L[x]).join(", ")}. ${esc(q.why)}${q.ua?`<div class="uaexp">🇺🇦 ${esc(q.ua)}</div>`:""}</div>`;
+  } else fb.innerHTML = "";
+}
+
+function quizStats(id){
+  const qs = Q[id], st = S.quiz[id]||{sel:{},checked:{}};
+  let done=0, right=0;
+  qs.forEach((q,i)=>{ if(st.checked[i]){ done++; if(eq(st.sel[i]||[],q.a)) right++; } });
+  return {done,right,total:qs.length};
+}
+function paintScore(id){
+  const s = quizStats(id), el = document.querySelector(`[data-score="${id}"]`);
+  if(el) el.textContent = s.done ? `${s.right} / ${s.total} correct (${s.done} answered)` : `${s.total} questions`;
+  refreshProgress();
+}
+
+/* ===================== MOCK ===================== */
+function gradeMock(){
+  const qs = Q.mock, st = S.quiz.mock; let right=0; const by={};
+  qs.forEach((q,i)=>{ by[q.d] = by[q.d]||{r:0,t:0}; by[q.d].t++; if(eq(st.sel[i]||[],q.a)){ right++; by[q.d].r++; } });
+  return {right,total:qs.length,pct:Math.round(right/qs.length*100),by};
+}
+function mockStatus(){
+  const el = document.getElementById("mockStatus"); if(!el) return;
+  const qs = Q.mock, st = S.quiz.mock||{sel:{}};
+  const answered = qs.filter((q,i)=>(st.sel[i]||[]).length===q.a.length).length;
+  el.textContent = S.mock.submitted ? `Submitted. Last score ${S.mock.last}%, best ${S.mock.best}%` : `Answered ${answered} of ${qs.length}${S.mock.best!=null?` · Best so far ${S.mock.best}%`:""}`;
+}
+function showMockResult(){
+  const r = gradeMock(), box = document.getElementById("mockResult");
+  let rows = DOMAINS.map(d=>{ const b=r.by[d.id]; if(!b) return ""; const p=Math.round(b.r/b.t*100); return `<tr><td>${d.id.slice(1)}. ${d.name}</td><td>${b.r} / ${b.t}</td><td>${p}%</td></tr>`; }).join("");
+  const weakest = DOMAINS.filter(d=>r.by[d.id]).sort((a,b)=>(r.by[a.id].r/r.by[a.id].t)-(r.by[b.id].r/r.by[b.id].t))[0];
+  box.innerHTML = `<div class="result"><h4>Your result: ${r.right} / ${r.total} (${r.pct}%)</h4><p>${r.pct>=80?"Strong result. Keep reviewing the domains below 80%.":"Below the 80% target. Review the weakest domain, then retake."} Weakest domain: <a href="#${weakest.id}">${weakest.name}</a>.</p><div class="tablewrap"><table><tr><th>Domain</th><th>Correct</th><th>%</th></tr>${rows}</table></div><p>Correct answers and explanations are shown under each question below.</p></div>`;
+}
+
+/* ===================== PROGRESS ===================== */
+function refreshProgress(){
+  // module done dots
+  MODULES.forEach(m=>{
+    const dot = document.querySelector(`[data-dot="${m}"]`);
+    let done = !!S.done[m];
+    if(m==="mock") done = !!S.mock && (S.mock.best||0)>0;
+    if(dot) dot.classList.toggle("done",done);
+  });
+  document.querySelectorAll(".done-btn").forEach(b=>{
+    const on = !!S.done[b.dataset.done]; b.classList.toggle("on",on); b.textContent = on ? "Studied ✓" : "Mark as studied";
+  });
+  // overall: modules (studied) + quizzes answered
+  const studyIds = MODULES.filter(m=>m!=="mock");
+  let pts = studyIds.filter(m=>S.done[m]).length, max = studyIds.length;
+  Object.keys(Q).filter(k=>k!=="mock").forEach(k=>{ const s=quizStats(k); pts += s.done/s.total; max += 1; });
+  pts += S.mock && S.mock.best ? 1 : 0; max += 1;
+  const pct = Math.round(pts/max*100);
+  document.getElementById("overallTxt").textContent = `Progress: ${pct}%`;
+  document.getElementById("overallFill").style.width = pct+"%";
+  // blueprint levels
+  DOMAINS.forEach(d=>{
+    const s = quizStats(d.id), lvl = document.querySelector(`[data-lvl="${d.id}"]`);
+    if(lvl) lvl.style.height = (s.total ? Math.round(s.right/s.total*100) : 0) + "%";
+  });
+}
+
+function buildBlueprint(){
+  document.getElementById("blueprint").innerHTML = DOMAINS.map(d=>
+    `<a href="#${d.id}" style="flex:${d.w};background:${d.c}" title="Domain ${d.id.slice(1)}: ${d.name}, ${d.w}%"><span class="lvl" data-lvl="${d.id}"></span><span class="pct">${d.w}%</span><span>${d.name}</span></a>`).join("");
+}
+
+function buildGlossary(){
+  const list = document.getElementById("glList");
+  list.innerHTML = GLOSSARY.map(([t,en,uk])=>`<div class="gi" data-k="${esc((t+" "+en+" "+uk).toLowerCase())}"><dt>${esc(t)}</dt><dd>${esc(en)}<br><span class="uk">🇺🇦 ${esc(uk)}</span></dd></div>`).join("");
+  document.getElementById("glSearch").addEventListener("input",e=>{
+    const v = e.target.value.toLowerCase().trim();
+    list.querySelectorAll(".gi").forEach(g=>{ g.style.display = !v || g.dataset.k.includes(v) ? "" : "none"; });
+  });
+}
+
+/* ===================== INIT ===================== */
+buildBlueprint(); buildGlossary();
+document.querySelectorAll(".quiz").forEach(renderQuiz);
+document.querySelectorAll(".done-btn").forEach(b=>b.addEventListener("click",()=>{ S.done[b.dataset.done] = !S.done[b.dataset.done]; save(); }));
+refreshProgress();
+
+document.getElementById("resetBtn").addEventListener("click",()=>{
+  if(!confirm("Delete all saved progress in this browser?")) return;
+  S = {done:{},quiz:{},mock:{}}; save(); document.querySelectorAll(".quiz").forEach(renderQuiz); refreshProgress();
+});
+document.getElementById("exportBtn").addEventListener("click",()=>{
+  const blob = new Blob([JSON.stringify(S,null,2)],{type:"application/json"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "ccaof-progress.json"; a.click();
+});
+document.getElementById("importBtn").addEventListener("click",()=>document.getElementById("importFile").click());
+document.getElementById("importFile").addEventListener("change",e=>{
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = ()=>{ try{ const d = JSON.parse(r.result); S = {done:d.done||{},quiz:d.quiz||{},mock:d.mock||{}}; save(); document.querySelectorAll(".quiz").forEach(renderQuiz); refreshProgress(); alert("Progress imported."); }catch(err){ alert("This file isn’t a valid progress export."); } };
+  r.readAsText(f);
+});
+const tog = document.getElementById("navToggle"), side = document.getElementById("sidebar");
+tog.addEventListener("click",()=>{ const o = side.classList.toggle("open"); tog.setAttribute("aria-expanded",o); });
+side.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>{ if(innerWidth<=900){ side.classList.remove("open"); tog.setAttribute("aria-expanded","false"); } }));
+</script>
+</body>
+</html>
